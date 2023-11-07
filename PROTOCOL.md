@@ -8,23 +8,25 @@ Command: `connect -i <ip> -p <port>`
 |Response|Detail|
 | ---- | ---- |
 |`Connected`|The client is connected!|
-|`Nothing on this IP or port`|No server is available on this IP or port.|
-|`Too much players`|There is too much people on the server.|
+|`Error_1`|No server is available on this IP or port.|
+|`Error_2`|There is too much people on the server.|
+
 #### Register username
 Command: `username <username>`
 
 |Response|Detail|
 | ---- | ---- |
-|`Nice username`|The username as been added.|
-|`Too long`|The username is too long sorry.|
+|`Accepted`|The username as been added.|
+|`Error_3`|The username is too long sorry.|
+
 #### Start game
 Command: `start`
 
 |Response|Detail|
 | ---- | ---- |
-|`Let's gooo!`|The game start!|
-|`Wait a lil bit.`|The other player is not ready yet.|
-|`Forget username?`|You need to have a username.|
+|`Start`|The game start!|
+|`Wait`|The other player is not ready yet.|
+|`Error_4`|You need to have a username.|
 
 #### Place boat (actually random)
 
@@ -33,20 +35,19 @@ Command: `Shoot <position -> B1>`
 
 |Response|Detail|
 | ---- | ---- |
-|`Nice shot!`|You touched a sheep.|
-|`Plouf`|You missed the shot.|
-|`Sink!`|You sink a boat.|
+|`Touched`|You touched a sheep.|
+|`Missed`|You missed the shot.|
+|`Sinked`|You sink a boat.|
 
 #### Finish game
-Command: `Ciaoo`
 
 |Response|Detail|
 | ---- | ---- |
-|`Bye`|You ended the game.|
+|`End`|The game is finished|
 
-Command : `Again`
+Command : `Replay`
 
 |Response|Detail|
 | ---- | ---- |
-|`Challenge accepted`|Your oppenent accepted the challenge.|
-|`Oppenent deserted!`|Your oppenent deserted.|
+|`Accepeted`|Your oppenent accepted the challenge.|
+|`Denied`|Your oppenent deserted.|
