@@ -16,8 +16,8 @@ Command: `username <username>`
 |Response|Detail|
 | ---- | ---- |
 |`Accepted`|The username as been added.|
-|`Error <description>`|The username is too long sorry.|
-|`Error <description>`|The username is already taken (by the oppenent).|
+|`Error_1`|The username is too long sorry.|
+|`Error_2`|The username is already taken (by the oppenent).|
 
 #### Start game
 Command: `start`
@@ -26,18 +26,19 @@ Command: `start`
 | ---- | ---- |
 |`Start`|The game start!|
 |`Wait`|The other player is not ready yet.|
-|`Error <description>`|You need to have a username.|
+|`Error_3`|You need to have a username.|
 
 #### Place boat (actually random)
 
 #### Attack sheep
-Command: `Shoot <position -> B1>`
+Command: `shoot <position -> B1>`
 
 |Response|Detail|
 | ---- | ---- |
 |`Touched`|You touched a sheep.|
 |`Missed`|You missed the shot.|
 |`Sinked`|You sink a boat.|
+|`Error_4`|Shoot out of range|
 
 #### Finish game
 
@@ -45,7 +46,7 @@ Command: `Shoot <position -> B1>`
 | ---- | ---- |
 |`End <winner>`|The game is finished|
 
-Command : `Replay`
+Command : `replay`
 
 |Response|Detail|
 | ---- | ---- |
