@@ -3,20 +3,30 @@ package ch.heigvd.PicoCLI;
 import picocli.CommandLine;
 
 @CommandLine.Command(
-        name = "SheepMaBoat - Choose between playing or hosting!",
+        name = "start",
         version = "1.0",
         description = "A funny battlesheeep! ",
-        subcommands = { PicoCLI.StartClient.class, PicoCLI.StartServer.class},
+        subcommands = { PicoCLI.Client.class, PicoCLI.Server.class},
         mixinStandardHelpOptions = true)
+public class PicoCLI{
 
-public class PicoCLI {
     @CommandLine.Command(
             name = "client",
             version = "1.0",
-            description = "Start the client!",
+            description = "Start the client.",
             mixinStandardHelpOptions = true)
+    public static class Client implements Runnable{
 
-    public static class StartClient implements Runnable {
+        @CommandLine.Option(
+                names = {"-a", "--address"},
+                required = true,
+                description = "IP address to connect.")
+        private String address;
+
+        @CommandLine.Option(
+                names = {"-p", "--port"},
+                description = "Port to connect.")
+        private String port;
 
         @Override
         public void run() {
@@ -24,12 +34,16 @@ public class PicoCLI {
         }
     }
 
-    @CommandLine.Command(
-            name = "server",
-            version = "1.0",
-            description = "Start the server!",
-            mixinStandardHelpOptions = true)
-    public static class StartServer implements Runnable {
+    public static class Server implements Runnable{
+        @CommandLine.Option(
+                names = {"-a", "--address"},
+                description = "IP address to connect.")
+        private String address;
+
+        @CommandLine.Option(
+                names = {"-p", "--port"},
+                description = "Port to connect.")
+        private String port;
 
         @Override
         public void run() {
