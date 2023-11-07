@@ -1,9 +1,9 @@
 ## Server
-Start the server : `start -i <ip> -p <port>`
+Start the server : `start -i <ip> -p <port default->11111>`
 
 ## Client
 #### Connection
-Command: `connect -i <ip> -p <port>`
+Command: `connect -i <ip> -p <port default->11111>`
 
 |Response|Detail|
 | ---- | ---- |
