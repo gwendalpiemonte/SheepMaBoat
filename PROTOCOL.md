@@ -8,8 +8,7 @@ Command: `connect -i <ip> -p <port>`
 |Response|Detail|
 | ---- | ---- |
 |`Connected`|The client is connected!|
-|`Error_1`|No server is available on this IP or port.|
-|`Error_2`|There is too much people on the server.|
+|`Error <description>`|There is too much people on the server.|
 
 #### Register username
 Command: `username <username>`
@@ -17,7 +16,8 @@ Command: `username <username>`
 |Response|Detail|
 | ---- | ---- |
 |`Accepted`|The username as been added.|
-|`Error_3`|The username is too long sorry.|
+|`Error <description>`|The username is too long sorry.|
+|`Error <description>`|The username is already taken (by the oppenent).|
 
 #### Start game
 Command: `start`
@@ -26,7 +26,7 @@ Command: `start`
 | ---- | ---- |
 |`Start`|The game start!|
 |`Wait`|The other player is not ready yet.|
-|`Error_4`|You need to have a username.|
+|`Error <description>`|You need to have a username.|
 
 #### Place boat (actually random)
 
@@ -43,11 +43,12 @@ Command: `Shoot <position -> B1>`
 
 |Response|Detail|
 | ---- | ---- |
-|`End`|The game is finished|
+|`End <winner>`|The game is finished|
 
 Command : `Replay`
 
 |Response|Detail|
 | ---- | ---- |
 |`Accepeted`|Your oppenent accepted the challenge.|
+|`Wait`|Your oppenent is choosing.|
 |`Denied`|Your oppenent deserted.|
