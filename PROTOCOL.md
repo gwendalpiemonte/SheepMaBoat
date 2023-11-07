@@ -8,7 +8,7 @@ Command: `connect -i <ip> -p <port>`
 |Response|Detail|
 | ---- | ---- |
 |`Connected`|The client is connected!|
-|`Error <description>`|There is too much people on the server.|
+|`Error_1`|There is too much people on the server.|
 
 #### Register username
 Command: `username <username>`
@@ -16,8 +16,8 @@ Command: `username <username>`
 |Response|Detail|
 | ---- | ---- |
 |`Accepted`|The username as been added.|
-|`Error_1`|The username is too long sorry.|
-|`Error_2`|The username is already taken (by the oppenent).|
+|`Error_2`|The username is too long sorry.|
+|`Error_3`|The username is already taken (by the oppenent).|
 
 #### Start game
 Command: `start`
@@ -26,7 +26,7 @@ Command: `start`
 | ---- | ---- |
 |`Start`|The game start!|
 |`Wait`|The other player is not ready yet.|
-|`Error_3`|You need to have a username.|
+|`Error_4`|You need to have a username.|
 
 #### Place boat (actually random)
 
@@ -38,7 +38,7 @@ Command: `shoot <position -> B1>`
 |`Touched`|You touched a sheep.|
 |`Missed`|You missed the shot.|
 |`Sinked`|You sink a boat.|
-|`Error_4`|Shoot out of range|
+|`Error_5`|Shoot out of range|
 
 #### Finish game
 
