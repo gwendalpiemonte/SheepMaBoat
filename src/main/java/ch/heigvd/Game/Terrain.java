@@ -1,15 +1,10 @@
 package ch.heigvd.Game;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Terrain {
-    // Codes d'échappement ANSI pour les couleurs
-    public static final String RESET = "\u001B[0m";
-    public static final String RED = "\u001B[31m";
-    public static final String GREEN = "\u001B[32m";
-    public static final String YELLOW = "\u001B[33m";
-    public static final String BLUE = "\u001B[34m";
-    public static final String PURPLE = "\u001B[35m";
-    public static final String CYAN = "\u001B[36m";
-    public static final String WHITE = "\u001B[37m";
+    private static Map<Character, Integer> mapPositions = new HashMap<>();
     private String[] terrain = {
             "     A   B   C   D   E   F   G   H   I   J",
             "   ╔═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╗",
@@ -38,18 +33,63 @@ public class Terrain {
     public String[] getTerrain() {
         return terrain;
     }
-    public void tire(int colonne, int ligne, char obj){
-        if (ligne >= 0 && ligne < getTerrain().length && colonne >= 0 && colonne < getTerrain()[0].length()) {
-            // Convertir la chaîne en tableau de caractères pour pouvoir modifier la lettre
-            char[] ligneArray = getTerrain()[ligne].toCharArray();
-            ligneArray[colonne] = obj;
-            getTerrain()[ligne] = new String(ligneArray);
+    public void insert(char colonne, int ligne, char obj){
+        mapPositions.put('A', 1);
+        mapPositions.put('B', 2);
+        mapPositions.put('C', 3);
+        mapPositions.put('D', 4);
+        mapPositions.put('E', 5);
+        mapPositions.put('F', 6);
+        mapPositions.put('G', 7);
+        mapPositions.put('H', 8);
+        mapPositions.put('I', 9);
+        mapPositions.put('J', 10);
+
+        int x = mapPositions.get(colonne);
+        x = x * 4 + 1;
+
+        int y = ligne;
+        y += y;
+
+        if (y >= 0 && y < getTerrain().length && x >= 0 && x < getTerrain()[0].length()) {
+            char[] ligneArray = getTerrain()[y].toCharArray();
+            ligneArray[x] = obj;
+            getTerrain()[y] = new String(ligneArray);
 
         } else {
-            System.out.println("Position invalide. Veuillez entrer des valeurs de ligne et colonne valides.");
+            System.out.println("Error");
         }
     }
+    public void insert(Bateau bateau){
+        char colonne = bateau.getColonne();
+        int ligne = bateau.getLigne();
+        char obj = bateau.getNom();
 
+        for(int i = 0; i < bateau.getTaille(); ++ i){
+
+            this.insert(colonne, ligne, obj);
+
+            switch (bateau.getDirection()){
+                case "haut":
+                    ligne -= 1;
+                    break;
+                case "bas":
+                    ligne += 1;
+                    break;
+                case "gauche":
+                    colonne -= 1;
+                    break;
+                case "droite":
+                    colonne += 1;
+                    break;
+            }
+        }
+    }
+    public void insert(Bateau[] bateaux){
+        for(Bateau b : bateaux){
+            this.insert(b);
+        }
+    }
     public void affiche(){
         for (String ligne : this.getTerrain()) {
             System.out.println(ligne);

@@ -12,19 +12,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        CommandLine main = new CommandLine(new PicoCLI());
-        main.execute(args);
+        //CommandLine main = new CommandLine(new PicoCLI());
+        //main.execute(args);
 
+        // Init partie
         Game game = new Game();
-
-        Scanner scanner = new Scanner(System.in);
-
-        char colonne;
-        int ligne;
-        int round = 1;
-
         Terrain terrainJ1 = game.getTerrainJ1();
         Terrain terrainJ2 = game.getTerrainJ2();
+        Scanner scanner = new Scanner(System.in);
 
         // Saisie du nom du Joueur 1
         System.out.print("Entrez le nom du Joueur 1 : ");
@@ -37,13 +32,13 @@ public class Main {
         game.setJ2(new Joueur(nomJoueur2));
 
         // Bateaux
-        Bateau b1 = new Bateau('A',1,3,"bas");
-        Bateau b2 = new Bateau('J',5,2,"haut");
-        Bateau b3 = new Bateau('B',8,4,"droite");
-        Bateau b4 = new Bateau('H',6,4,"bas");
+        Bateau b1 = new Bateau('A',1,3,"bas", 'A');
+        Bateau b2 = new Bateau('J',5,2,"haut", 'B');
+        Bateau b3 = new Bateau('B',8,4,"droite", 'C');
+        Bateau b4 = new Bateau('H',6,4,"bas", 'D');
         Bateau[] bts ={b1, b2, b3, b4};
 
-        Bateau.insert(terrainJ1,bts);
+        terrainJ1.insert(bts);
 
         game.affiche();
 /*
@@ -100,6 +95,5 @@ public class Main {
         }*/
 
         System.exit(0);
-
     }
 }
