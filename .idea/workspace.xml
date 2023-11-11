@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3db338dd-1630-4e3d-827f-3bb940f24494" name="Changes" comment="feat: add code">
+    <list default="true" id="3db338dd-1630-4e3d-827f-3bb940f24494" name="Changes" comment="feat: update the insert methode">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Bateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Bateau.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Canon.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Terrain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java" afterDir="false" />
     </list>
@@ -157,7 +154,7 @@
       <workItem from="1699371347616" duration="3588000" />
       <workItem from="1699726020987" duration="298000" />
       <workItem from="1699726329273" duration="1927000" />
-      <workItem from="1699728274882" duration="521000" />
+      <workItem from="1699728274882" duration="1766000" />
     </task>
     <task id="LOCAL-00001" summary="Init project&#10;Close #7">
       <option name="closed" value="true" />
@@ -183,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699726930410</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: update the insert methode">
+      <option name="closed" value="true" />
+      <created>1699728839090</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699728839090</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +198,7 @@
     <MESSAGE value="Init project&#10;Close #7" />
     <MESSAGE value="Adding PicoCLI library and first commands" />
     <MESSAGE value="feat: add code" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add code" />
+    <MESSAGE value="feat: update the insert methode" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update the insert methode" />
   </component>
 </project>

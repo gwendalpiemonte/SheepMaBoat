@@ -33,7 +33,7 @@ public class Terrain {
     public String[] getTerrain() {
         return terrain;
     }
-    public void insert(char colonne, int ligne, char obj){
+    public void insert(char colonne, int ligne, char obj, boolean tire){
         mapPositions.put('A', 1);
         mapPositions.put('B', 2);
         mapPositions.put('C', 3);
@@ -53,12 +53,22 @@ public class Terrain {
 
         if (y >= 0 && y < getTerrain().length && x >= 0 && x < getTerrain()[0].length()) {
             char[] ligneArray = getTerrain()[y].toCharArray();
+
+            if (ligneArray[x] != ' ') {
+                System.out.println("Touché");
+                //Ckeck si le bateau touché est coulé ou pas
+            }
+            else {
+                System.out.println("Raté");
+            }
+
             ligneArray[x] = obj;
             getTerrain()[y] = new String(ligneArray);
 
         } else {
             System.out.println("Error");
         }
+
     }
     public void insert(Bateau bateau){
         char colonne = bateau.getColonne();
@@ -67,7 +77,7 @@ public class Terrain {
 
         for(int i = 0; i < bateau.getTaille(); ++ i){
 
-            this.insert(colonne, ligne, obj);
+            this.insert(colonne, ligne, obj, false);
 
             switch (bateau.getDirection()){
                 case "haut":
