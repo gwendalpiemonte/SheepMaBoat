@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3db338dd-1630-4e3d-827f-3bb940f24494" name="Changes" comment="Adding PicoCLI library and first commands">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/PicoCLI/PicoCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/PicoCLI/PicoCLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +51,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;F-Add-PicoCLI-Server/User&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Battleships-implementation&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gwend/Documents/Heig-VD/S3/DAI/Labos/SheepMaBoat&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -58,8 +61,13 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn package" />
+    </option>
+  </component>
   <component name="RunManager">
-    <configuration name="SheepMaBoat [dependency:resolve,clean...]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+    <configuration name="SheepMaBoat package" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings">
           <MavenGeneralSettings>
@@ -123,6 +131,8 @@
       <workItem from="1699365258949" duration="921000" />
       <workItem from="1699369634617" duration="961000" />
       <workItem from="1699371347616" duration="3588000" />
+      <workItem from="1699726020987" duration="298000" />
+      <workItem from="1699726329273" duration="447000" />
     </task>
     <task id="LOCAL-00001" summary="Init project&#10;Close #7">
       <option name="closed" value="true" />
