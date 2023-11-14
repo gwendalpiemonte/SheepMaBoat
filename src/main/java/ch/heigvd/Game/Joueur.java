@@ -10,7 +10,6 @@ public class Joueur {
     public String getPseudo() {
         return pseudo;
     }
-
     public void affiche(){
         System.out.println(this.pseudo);
     }

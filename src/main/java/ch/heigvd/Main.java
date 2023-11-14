@@ -40,7 +40,7 @@ public class Main {
 
 
         while (true){
-            if(round == 1){
+            if(game.getRound() == 1){
                 // Saisie du nom du Joueur 1
                 System.out.print("Entrez le nom du Joueur 1 : ");
                 String nomJoueur1 = scanner.nextLine();
@@ -58,7 +58,7 @@ public class Main {
             }
 
             // Tour du Joueur 1
-            if(round % 2 != 0){
+            if(game.getRound() % 2 != 0){
                 System.out.println("\nTour de " + game.getJ1().getPseudo());
                 System.out.println("Entrez la colonne où tirer  (A,B,C,D,E,F,G,H,I,J) :");
                 colonne = scanner.next().charAt(0);
@@ -79,7 +79,7 @@ public class Main {
                 terrainJ1.insert(colonne,ligne,'X',true);
                 game.affiche();
             }
-            ++round;
+            game.nextRound();
         }
 
         //System.exit(0);

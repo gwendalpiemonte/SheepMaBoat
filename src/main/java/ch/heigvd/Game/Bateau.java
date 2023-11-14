@@ -21,19 +21,15 @@ public class Bateau {
     public char getColonne() {
         return colonne;
     }
-
     public int getLigne() {
         return ligne;
     }
-
     public int getTaille() {
         return taille;
     }
-
     public String getDirection() {
         return direction;
     }
-
     public char getNom() {
         return nom;
     }

@@ -5,7 +5,11 @@ public class Game {
     private Terrain terrainJ2 = new Terrain();
     private Joueur j1;
     private Joueur j2;
+    private int round = 1;
 
+    public void nextRound(){
+        this.setRound(this.getRound() + 1);
+    }
     public void affiche(){
         getJ1().affiche();
         getTerrainJ1().affiche();
@@ -30,5 +34,12 @@ public class Game {
     }
     public Terrain getTerrainJ2() {
         return terrainJ2;
+    }
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
     }
 }
