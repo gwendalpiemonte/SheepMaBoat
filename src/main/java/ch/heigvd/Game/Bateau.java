@@ -4,25 +4,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Bateau {
-    private char colonne;
-    private int ligne;
+    private Position posTete;
     private int taille;
     private String direction;
     private char nom;
 
-    public Bateau(char colonne, int ligne, int taille, String direction, char nom){
-        this.colonne = colonne;
-        this.ligne = ligne;
+    public Bateau(Position posTete, int taille, String direction, char nom){
+        this.posTete = posTete;
         this.taille = taille;
         this.direction = direction;
         this.nom = nom;
     }
-
-    public char getColonne() {
-        return colonne;
+    public Bateau(Position posTete, int taille, String direction){
+        this.posTete = posTete;
+        this.taille = taille;
+        this.direction = direction;
+        this.nom = 'B';
     }
-    public int getLigne() {
-        return ligne;
+
+
+    public Position getPosTete() {
+        return posTete;
     }
     public int getTaille() {
         return taille;

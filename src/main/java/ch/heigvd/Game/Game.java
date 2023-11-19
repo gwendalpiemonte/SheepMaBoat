@@ -1,8 +1,9 @@
 package ch.heigvd.Game;
 
+import java.util.Scanner;
+
 public class Game {
-    private Terrain terrainJ1 = new Terrain();
-    private Terrain terrainJ2 = new Terrain();
+    private Scanner scanner = new Scanner(System.in);
     private Joueur j1;
     private Joueur j2;
     private int round = 1;
@@ -12,10 +13,10 @@ public class Game {
     }
     public void affiche(){
         getJ1().affiche();
-        getTerrainJ1().affiche();
+        getJ1().getTerrainBoats().affiche();
         System.out.println();
         getJ2().affiche();
-        getTerrainJ2().affiche();
+        getJ2().getTerrainBoats().affiche();
     }
     public void setJ1(Joueur j1) {
         this.j1 = j1;
@@ -29,17 +30,36 @@ public class Game {
     public Joueur getJ2() {
         return j2;
     }
-    public Terrain getTerrainJ1() {
-        return terrainJ1;
-    }
-    public Terrain getTerrainJ2() {
-        return terrainJ2;
-    }
     public int getRound() {
         return round;
     }
-
     public void setRound(int round) {
         this.round = round;
+    }
+
+    public void firstRound(){
+        // Saisie du nom du Joueur 1
+        System.out.print("Entrez le nom du Joueur 1 : ");
+        String nomJoueur1 = scanner.nextLine();
+        setJ1(new Joueur(nomJoueur1));
+
+        // Saisie du nom du Joueur 2
+        System.out.print("Entrez le nom du Joueur 2 : ");
+        String nomJoueur2 = scanner.nextLine();
+        setJ2(new Joueur(nomJoueur2));
+
+        setJ1(new Joueur(nomJoueur1));
+        setJ2(new Joueur(nomJoueur2));
+    }
+    public void playRound(Joueur play,Joueur wait){
+        System.out.println("\nTour de " + play.getPseudo());
+        System.out.println("Entrez la colonne où tirer  (A,B,C,D,E,F,G,H,I,J) :");
+        char colonne = scanner.next().charAt(0);
+        System.out.println("Entrez la ligne où tirer   (1,2,3,4,5,6,7,8,9,10) :");
+        int ligne = scanner.nextInt();
+
+        Position shoot = new Position(colonne,ligne);
+
+        wait.getTerrainBoats().insert(shoot,'X',true);
     }
 }

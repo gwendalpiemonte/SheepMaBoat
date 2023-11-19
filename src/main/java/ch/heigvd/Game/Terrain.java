@@ -33,7 +33,7 @@ public class Terrain {
     public String[] getTerrain() {
         return terrain;
     }
-    public void insert(char colonne, int ligne, char obj, boolean tire){
+    public void insert(Position position, char obj, boolean tire){
         mapPositions.put('A', 1);
         mapPositions.put('B', 2);
         mapPositions.put('C', 3);
@@ -45,10 +45,10 @@ public class Terrain {
         mapPositions.put('I', 9);
         mapPositions.put('J', 10);
 
-        int x = mapPositions.get(colonne);
+        int x = mapPositions.get(position.getColonne());
         x = x * 4 + 1;
 
-        int y = ligne;
+        int y = position.getLigne();
         y += y;
 
         if (y >= 0 && y < getTerrain().length && x >= 0 && x < getTerrain()[0].length()) {
@@ -71,26 +71,23 @@ public class Terrain {
 
     }
     public void insert(Bateau bateau){
-        char colonne = bateau.getColonne();
-        int ligne = bateau.getLigne();
-        char obj = bateau.getNom();
 
         for(int i = 0; i < bateau.getTaille(); ++ i){
 
-            this.insert(colonne, ligne, obj, false);
+            this.insert(bateau.getPosTete(), bateau.getNom(), false);
 
             switch (bateau.getDirection()){
                 case "haut":
-                    ligne -= 1;
+                    bateau.getPosTete().setLigne(bateau.getPosTete().getLigne() - 1);
                     break;
                 case "bas":
-                    ligne += 1;
+                    bateau.getPosTete().setLigne(bateau.getPosTete().getLigne() + 1);
                     break;
                 case "gauche":
-                    colonne -= 1;
+                    bateau.getPosTete().setColonne((char) (bateau.getPosTete().getColonne() - 1));
                     break;
                 case "droite":
-                    colonne += 1;
+                    bateau.getPosTete().setColonne((char) (bateau.getPosTete().getColonne() + 1));
                     break;
             }
         }
