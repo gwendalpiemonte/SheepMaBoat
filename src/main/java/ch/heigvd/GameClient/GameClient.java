@@ -1,14 +1,14 @@
-package ch.heigvd.Client;
+package ch.heigvd.GameClient;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client {
-    public static void main(String[] args) {
+public class GameClient {
+    public static void start(String serverIP, int serverPort) {
 
-        try (Socket socket = new Socket("127.0.0.1", 5555);
+        try (Socket socket = new Socket(serverIP, serverPort);
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              Scanner in = new Scanner(socket.getInputStream());
              Scanner consoleInput = new Scanner(System.in)) {
