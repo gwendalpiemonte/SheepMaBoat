@@ -1,5 +1,7 @@
 package ch.heigvd.PicoCLI;
 
+import ch.heigvd.GameClient.GameClient;
+import ch.heigvd.GameServer.GameServer;
 import picocli.CommandLine;
 
 @CommandLine.Command(
@@ -24,10 +26,10 @@ public class PicoCLI{
         @CommandLine.Option(
                 names = {"-p", "--port"},
                 description = "Port to connect.")
-        private String port;
+        private int port = 11111;
         @Override
         public void run() {
-            System.out.println("Le client va démarrer!");
+            GameClient.start(address, port);
         }
     }
 
@@ -40,14 +42,15 @@ public class PicoCLI{
         @CommandLine.Option(
                 names = {"-a", "--address"},
                 description = "IP address to connect.")
-        private String address;
+        private String address = "127.0.0.1";
         @CommandLine.Option(
                 names = {"-p", "--port"},
                 description = "Port to connect.")
-        private String port;
+
+        private int port = 11111;
         @Override
         public void run() {
-            System.out.println("Le serveur va démarrer!");
+            GameServer.start(address, port);
         }
     }
 }
