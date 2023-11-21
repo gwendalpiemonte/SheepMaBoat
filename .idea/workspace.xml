@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3db338dd-1630-4e3d-827f-3bb940f24494" name="Changes" comment="feat: creating both client and server CLI">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/GameClient/GameClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/GameServer/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/GameServer/ClientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/PicoCLI/PicoCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/PicoCLI/PicoCLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/GameServer/GameServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +56,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "F-Connect-PicoCLI-TCP",
+    "git-widget-placeholder": "F-Optimize-Message-Handling",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
