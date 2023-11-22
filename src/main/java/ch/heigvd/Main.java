@@ -1,5 +1,6 @@
 package ch.heigvd;
 
+import ch.heigvd.GameServer.GameServer;
 import ch.heigvd.PicoCLI.PicoCLI;
 import picocli.CommandLine;
 
