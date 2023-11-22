@@ -16,7 +16,20 @@ public class Main {
         Game game = new Game();
 
         Joueur j1 = new Joueur("Joueur 1");
-        Joueur.initBateaux(j1);
+
+        Bateau[] b;
+
+        boolean reussi = false;
+
+        b = Bateau.initBateaux();
+
+
+        j1.getTerrainBoats().insert(b);
+
+
+
+
+
 
         j1.getTerrainBoats().affiche();
 

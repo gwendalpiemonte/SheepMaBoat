@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3db338dd-1630-4e3d-827f-3bb940f24494" name="Changes" comment="feat: shot can touch a boat">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Position.java" afterDir="false" />
+    <list default="true" id="3db338dd-1630-4e3d-827f-3bb940f24494" name="Changes" comment="feat: add a Position class, organise the code and try to make an algo to put the boats in the sea.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Bateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Bateau.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Joueur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Terrain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java" afterDir="false" />
@@ -68,24 +66,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "F-Battleships-implementation",
-    "last_opened_file_path": "C:/Users/gwend/Documents/POO-Labo-Matrice",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;F-Battleships-implementation&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gwend/Documents/Heig-VD/S3/DAI/Practical Content/Java-UDP-Programming&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn package" />
@@ -163,6 +161,8 @@
       <workItem from="1699964147279" duration="88000" />
       <workItem from="1699965563070" duration="3507000" />
       <workItem from="1699976534779" duration="1401000" />
+      <workItem from="1700578909956" duration="481000" />
+      <workItem from="1700635243956" duration="976000" />
     </task>
     <task id="LOCAL-00001" summary="Init project&#10;Close #7">
       <option name="closed" value="true" />
@@ -204,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699730089352</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: add a Position class, organise the code and try to make an algo to put the boats in the sea.">
+      <option name="closed" value="true" />
+      <created>1700433201527</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700433201527</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,15 +224,16 @@
     <MESSAGE value="feat: add code" />
     <MESSAGE value="feat: update the insert methode" />
     <MESSAGE value="feat: shot can touch a boat" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: shot can touch a boat" />
+    <MESSAGE value="feat: add a Position class, organise the code and try to make an algo to put the boats in the sea." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add a Position class, organise the code and try to make an algo to put the boats in the sea." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Terrain.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

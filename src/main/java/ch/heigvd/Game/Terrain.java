@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class Terrain {
     private static Map<Character, Integer> mapPositions = new HashMap<>();
+    private Bateau[] bateaux = new Bateau[5];
     private String[] terrain = {
             "     A   B   C   D   E   F   G   H   I   J",
             "   ╔═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╗",
@@ -45,7 +46,7 @@ public class Terrain {
         mapPositions.put('I', 9);
         mapPositions.put('J', 10);
 
-        int x = mapPositions.get(position.getColonne());
+        int x = mapPositions.get((char)position.getColonne());
         x = x * 4 + 1;
 
         int y = position.getLigne();
