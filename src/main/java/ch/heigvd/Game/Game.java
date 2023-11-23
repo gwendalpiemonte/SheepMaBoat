@@ -3,7 +3,7 @@ package ch.heigvd.Game;
 import java.util.Scanner;
 
 public class Game {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private Joueur j1;
     private Joueur j2;
     private int round = 1;
@@ -15,7 +15,7 @@ public class Game {
         getJ1().affiche();
         getJ1().getTerrainBoats().affiche();
         getJ1().getTerrainShoots().affiche();
-        System.out.println();
+        System.out.println("\n-----------------------------------------------");
         getJ2().affiche();
         getJ2().getTerrainBoats().affiche();
         getJ2().getTerrainShoots().affiche();

@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class Bateau {
-    private LinkedList<Position> positions = new LinkedList<>();
-    private int taille;
-    private char symbole;
+    private final LinkedList<Position> positions = new LinkedList<>();
+    private final int taille;
+    private final char symbole;
 
     public Bateau(int taille, char symbole){
         this.taille = taille;
@@ -76,7 +76,6 @@ public class Bateau {
     public void deletePos(Position position, int index){
         positions.set(index, position);
     }
-
     public char getSymbole() {
         return symbole;
     }

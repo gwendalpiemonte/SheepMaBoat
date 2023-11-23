@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Terrain {
-    private static Map<Character, Integer> mapPositions = new HashMap<>();
+    private static final Map<Character, Integer> mapPositions = new HashMap<>();
     private Bateau[] bateaux = new Bateau[5];
-    private String[] terrain = {
+    private final String[] terrain = {
             "     A   B   C   D   E   F   G   H   I   J",
             "   ╔═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╗",
             " 1 ║   ║   ║   ║   ║   ║   ║   ║   ║   ║   ║ ",
@@ -34,6 +34,7 @@ public class Terrain {
     public Terrain(boolean bat){
         if(bat){
             bateaux = Bateau.creeBateaux();
+            assert bateaux != null;
             for(Bateau bateau : bateaux){
                 for(Position position : bateau.getPositions()){
                     insert(position, bateau.getSymbole());
@@ -45,12 +46,7 @@ public class Terrain {
     public String[] getTerrain() {
         return terrain;
     }
-
-    public Bateau[] getBateaux() {
-        return bateaux;
-    }
-
-    public void insert(Position position, char obj){
+    private int parsePos(int val){
         mapPositions.put('A', 1);
         mapPositions.put('B', 2);
         mapPositions.put('C', 3);
@@ -61,8 +57,10 @@ public class Terrain {
         mapPositions.put('H', 8);
         mapPositions.put('I', 9);
         mapPositions.put('J', 10);
-
-        int x = mapPositions.get(position.getColonne());
+        return mapPositions.get(val);
+    }
+    public void insert(Position position, char obj){
+        int x = parsePos(position.getColonne());
         x = x * 4 + 1;
 
         int y = position.getLigne();
@@ -78,18 +76,7 @@ public class Terrain {
         }
     }
     public void insert(Position position, char obj, Terrain autreTerrain){
-        mapPositions.put('A', 1);
-        mapPositions.put('B', 2);
-        mapPositions.put('C', 3);
-        mapPositions.put('D', 4);
-        mapPositions.put('E', 5);
-        mapPositions.put('F', 6);
-        mapPositions.put('G', 7);
-        mapPositions.put('H', 8);
-        mapPositions.put('I', 9);
-        mapPositions.put('J', 10);
-
-        int x = mapPositions.get(position.getColonne());
+        int x = parsePos(position.getColonne());
         x = x * 4 + 1;
 
         int y = position.getLigne();
@@ -103,48 +90,31 @@ public class Terrain {
         } else {
             System.out.println("Error");
         }
-
-            boolean touch = false;
-            boolean win = false;
-            for(Bateau bateau : bateaux){
-                for(Position pos : bateau.getPositions()){
-                    if(pos.getColonne() == position.getColonne() && pos.getLigne() == position.getLigne()){
-                        touch = true;
-                        System.out.println("Touché");
-                        insert(pos,'0');
-                        autreTerrain.insert(pos,'0');
-                        bateau.deletePos(new Position('A',0),bateau.getPositions().indexOf(pos));
-                        int count = 0;
-                        for(Position pos2 : bateau.getPositions()){
-                            if(pos2.getColonne() == 'A' && pos2.getLigne() == 0){
-                                ++count;
-                            }
-                        }
-                        if(count == bateau.getTaille()){
-                            System.out.println("Coulé");
-                        }
-                    }
+        boolean touch = false;
+        for(Bateau bateau : bateaux){
+            for(Position pos : bateau.getPositions()) {
+                if (pos.getColonne() == position.getColonne() && pos.getLigne() == position.getLigne()) {
+                    touch = true;
+                    System.out.println("Touché");
+                    insert(pos, '0');
+                    autreTerrain.insert(pos, '0');
+                    bateau.deletePos(new Position('A', 0), bateau.getPositions().indexOf(pos));
                     int count = 0;
-                    for(Position pos2 : bateau.getPositions()){
-                        if(pos2.getColonne() == 'A' && pos2.getLigne() == 0){
+                    for (Position pos2 : bateau.getPositions()) {
+                        if (pos2.getColonne() == 'A' && pos2.getLigne() == 0) {
                             ++count;
                         }
                     }
-                    if(count == bateau.getTaille()){
-                        win = true;
-                    }
-                    else {
-                        win = false;
+                    if (count == bateau.getTaille()) {
+                        System.out.println("Coulé");
                     }
                 }
             }
-            if(!touch){
-                System.out.println("Raté");
-                autreTerrain.insert(position,'X');
-            }
-            if(win){
-                System.out.println("Partie terminée");
-            }
+        }
+        if(!touch){
+            System.out.println("Raté");
+            autreTerrain.insert(position,'X');
+        }
     }
     public void affiche(){
         for (String ligne : this.getTerrain()) {
