@@ -14,9 +14,11 @@ public class Game {
     public void affiche(){
         getJ1().affiche();
         getJ1().getTerrainBoats().affiche();
+        getJ1().getTerrainShoots().affiche();
         System.out.println();
         getJ2().affiche();
         getJ2().getTerrainBoats().affiche();
+        getJ2().getTerrainShoots().affiche();
     }
     public void setJ1(Joueur j1) {
         this.j1 = j1;
@@ -36,7 +38,6 @@ public class Game {
     public void setRound(int round) {
         this.round = round;
     }
-
     public void firstRound(){
         // Saisie du nom du Joueur 1
         System.out.print("Entrez le nom du Joueur 1 : ");
@@ -64,7 +65,7 @@ public class Game {
             int ligne = Integer.parseInt(input.substring(1));
 
             Position shoot = new Position(colonne, ligne);
-            wait.getTerrainBoats().insert(shoot, 'X', true);
+            wait.getTerrainBoats().insert(shoot, 'X', play.getTerrainShoots());
         } else {
             System.out.println("Entrée invalide.");
         }
