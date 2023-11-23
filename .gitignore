@@ -36,3 +36,8 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/hs_err_pid2708.jfr
+/hs_err_pid2708.log
+/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_23,_22_24_[Changes]/shelved.patch
+/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_23,_22_24_[Changes]1/shelved.patch
+/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_23__22_24__Changes_.xml
