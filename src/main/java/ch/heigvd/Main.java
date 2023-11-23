@@ -1,9 +1,6 @@
 package ch.heigvd;
 
-import ch.heigvd.Game.Bateau;
-import ch.heigvd.Game.Joueur;
-import ch.heigvd.Game.Terrain;
-import ch.heigvd.Game.Game;
+import ch.heigvd.Game.*;
 import ch.heigvd.PicoCLI.PicoCLI;
 import picocli.CommandLine;
 
@@ -12,29 +9,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        // Init partie
+        // Initialisation du jeu
         Game game = new Game();
 
-        Joueur j1 = new Joueur("Joueur 1");
-
-        Bateau[] b;
-
-        boolean reussi = false;
-
-        b = Bateau.initBateaux();
-
-
-        j1.getTerrainBoats().insert(b);
-
-
-
-
-
-
-        j1.getTerrainBoats().affiche();
-
-
-        /*while (true){
+        // Boucle de jeu
+        while (true){
             if(game.getRound() == 1){
                 game.firstRound();
                 game.affiche();
@@ -47,6 +26,7 @@ public class Main {
                 game.affiche();
             }
             game.nextRound();
-        }*/
+        }
+
     }
 }

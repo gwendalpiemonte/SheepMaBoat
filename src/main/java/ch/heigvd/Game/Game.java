@@ -61,5 +61,6 @@ public class Game {
         Position shoot = new Position(colonne,ligne);
 
         wait.getTerrainBoats().insert(shoot,'X',true);
+
     }
 }

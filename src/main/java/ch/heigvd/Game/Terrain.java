@@ -31,9 +31,25 @@ public class Terrain {
             "   ╚═══╩═══╩═══╩═══╩═══╩═══╩═══╩═══╩═══╩═══╝"
     };
 
+    public Terrain(boolean bat){
+        if(bat){
+            bateaux = Bateau.creeBateaux();
+            for(Bateau bateau : bateaux){
+                for(Position position : bateau.getPositions()){
+                    insert(position, bateau.getSymbole(), false);
+                }
+            }
+        }
+    }
+
     public String[] getTerrain() {
         return terrain;
     }
+
+    public Bateau[] getBateaux() {
+        return bateaux;
+    }
+
     public void insert(Position position, char obj, boolean tire){
         mapPositions.put('A', 1);
         mapPositions.put('B', 2);
@@ -46,7 +62,7 @@ public class Terrain {
         mapPositions.put('I', 9);
         mapPositions.put('J', 10);
 
-        int x = mapPositions.get((char)position.getColonne());
+        int x = mapPositions.get(position.getColonne());
         x = x * 4 + 1;
 
         int y = position.getLigne();
@@ -54,15 +70,6 @@ public class Terrain {
 
         if (y >= 0 && y < getTerrain().length && x >= 0 && x < getTerrain()[0].length()) {
             char[] ligneArray = getTerrain()[y].toCharArray();
-
-            if (ligneArray[x] != ' ') {
-                System.out.println("Touché");
-                //Ckeck si le bateau touché est coulé ou pas
-            }
-            else {
-                System.out.println("Raté");
-            }
-
             ligneArray[x] = obj;
             getTerrain()[y] = new String(ligneArray);
 
@@ -70,33 +77,48 @@ public class Terrain {
             System.out.println("Error");
         }
 
-    }
-    public void insert(Bateau bateau){
-
-        for(int i = 0; i < bateau.getTaille(); ++ i){
-
-            this.insert(bateau.getPosTete(), bateau.getNom(), false);
-
-            switch (bateau.getDirection()){
-                case "haut":
-                    bateau.getPosTete().setLigne(bateau.getPosTete().getLigne() - 1);
-                    break;
-                case "bas":
-                    bateau.getPosTete().setLigne(bateau.getPosTete().getLigne() + 1);
-                    break;
-                case "gauche":
-                    bateau.getPosTete().setColonne((char) (bateau.getPosTete().getColonne() - 1));
-                    break;
-                case "droite":
-                    bateau.getPosTete().setColonne((char) (bateau.getPosTete().getColonne() + 1));
-                    break;
+        if(tire){
+            boolean touch = false;
+            boolean win = false;
+            for(Bateau bateau : bateaux){
+                for(Position pos : bateau.getPositions()){
+                    if(pos.getColonne() == position.getColonne() && pos.getLigne() == position.getLigne()){
+                        touch = true;
+                        System.out.println("Touché");
+                        insert(pos,'0',false);
+                        bateau.changePosition(new Position('A',0),bateau.getPositions().indexOf(pos));
+                        int count = 0;
+                        for(Position pos2 : bateau.getPositions()){
+                            if(pos2.getColonne() == 'A' && pos2.getLigne() == 0){
+                                ++count;
+                            }
+                        }
+                        if(count == bateau.getTaille()){
+                            System.out.println("Coulé");
+                        }
+                    }
+                    int count = 0;
+                    for(Position pos2 : bateau.getPositions()){
+                        if(pos2.getColonne() == 'A' && pos2.getLigne() == 0){
+                            ++count;
+                        }
+                    }
+                    if(count == bateau.getTaille()){
+                        win = true;
+                    }
+                    else {
+                        win = false;
+                    }
+                }
+            }
+            if(!touch){
+                System.out.println("Raté");
+            }
+            if(win){
+                System.out.println("Partie terminée");
             }
         }
-    }
-    public void insert(Bateau[] bateaux){
-        for(Bateau b : bateaux){
-            this.insert(b);
-        }
+
     }
     public void affiche(){
         for (String ligne : this.getTerrain()) {

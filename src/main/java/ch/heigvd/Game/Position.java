@@ -15,11 +15,4 @@ public class Position {
     public int getLigne() {
         return ligne;
     }
-
-    public void setColonne(char colonne) {
-        this.colonne = colonne;
-    }
-    public void setLigne(int ligne) {
-        this.ligne = ligne;
-    }
 }
