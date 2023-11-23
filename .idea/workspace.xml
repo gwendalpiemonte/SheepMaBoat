@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3db338dd-1630-4e3d-827f-3bb940f24494" name="Changes" comment="feat: creating both client and server CLI">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/GameServer/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/GameServer/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java" afterDir="false" />
+    <list default="true" id="3db338dd-1630-4e3d-827f-3bb940f24494" name="Changes" comment="feat: 99% of the logic is done">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Bateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Bateau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Terrain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +31,27 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;gwendalpiemonte&quot;
+  }
+}</component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="202aea4c-63fb-4e84-936a-34c0f944be64" />
+        <option name="url" value="git@github.com:gwendalpiemonte/SheepMaBoat.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -56,22 +81,25 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "F-Optimize-Message-Handling",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "F-Battleships-implementation",
+    "last_opened_file_path": "C:/Users/gwend/Documents/Heig-VD/S3/DAI/Practical Content/Java-UDP-Programming",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ch.heigvd.Client" />
-    </key>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn package" />
+    </option>
   </component>
   <component name="RunManager">
-    <configuration name="SheepMaBoat [dependency:resolve,clean...]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+    <configuration name="SheepMaBoat package" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings">
           <MavenGeneralSettings>
@@ -135,8 +163,16 @@
       <workItem from="1699365258949" duration="921000" />
       <workItem from="1699369634617" duration="961000" />
       <workItem from="1699371347616" duration="3588000" />
-      <workItem from="1700318453113" duration="7733000" />
-      <workItem from="1700381925855" duration="1180000" />
+      <workItem from="1699726020987" duration="298000" />
+      <workItem from="1699726329273" duration="1927000" />
+      <workItem from="1699728274882" duration="1894000" />
+      <workItem from="1699963321961" duration="812000" />
+      <workItem from="1699964147279" duration="88000" />
+      <workItem from="1699965563070" duration="3507000" />
+      <workItem from="1699976534779" duration="1401000" />
+      <workItem from="1700578909956" duration="481000" />
+      <workItem from="1700635243956" duration="2076000" />
+      <workItem from="1700751576991" duration="7503000" />
     </task>
     <task id="LOCAL-00001" summary="Init project&#10;Close #7">
       <option name="closed" value="true" />
@@ -154,15 +190,63 @@
       <option name="project" value="LOCAL" />
       <updated>1699370553271</updated>
     </task>
-    <task id="LOCAL-00003" summary="wip: adding code structure and working on CLI">
+    <task id="LOCAL-00003" summary="feat: add code">
       <option name="closed" value="true" />
-      <created>1699375628202</created>
+      <created>1699726930410</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1699375628202</updated>
+      <updated>1699726930410</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: update the insert methode">
+      <option name="closed" value="true" />
+      <created>1699728839090</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699728839090</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: shot can touch a boat">
+      <option name="closed" value="true" />
+      <created>1699730089352</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699730089352</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: add a Position class, organise the code and try to make an algo to put the boats in the sea.">
+      <option name="closed" value="true" />
+      <created>1700433201527</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700433201527</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: change the boats implementation">
+      <option name="closed" value="true" />
+      <created>1700638695349</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700638695350</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: almost finidh the game logic">
+      <option name="closed" value="true" />
+      <created>1700758667260</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700758667260</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: 99% of the logic is done">
+      <option name="closed" value="true" />
+      <created>1700766646897</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1700766646897</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +255,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init project&#10;Close #7" />
     <MESSAGE value="Adding PicoCLI library and first commands" />
-    <MESSAGE value="wip: adding code structure and working on CLI" />
-    <option name="LAST_COMMIT_MESSAGE" value="wip: adding code structure and working on CLI" />
+    <MESSAGE value="feat: add code" />
+    <MESSAGE value="feat: update the insert methode" />
+    <MESSAGE value="feat: shot can touch a boat" />
+    <MESSAGE value="feat: add a Position class, organise the code and try to make an algo to put the boats in the sea." />
+    <MESSAGE value="feat: change the boats implementation" />
+    <MESSAGE value="feat: almost finidh the game logic" />
+    <MESSAGE value="feat: 99% of the logic is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 99% of the logic is done" />
   </component>
 </project>

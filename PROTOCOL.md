@@ -5,7 +5,7 @@ Start the server : `start -i <ip> -p <port>`
 #### Connection
 Command: `connect -i <ip> -p <port>`
 
-|Response|Detail|
+|Response|Detail| 
 | ---- | ---- |
 |`Connected`|The client is connected!|
 |`Error <description>`|There is too much people on the server.|
