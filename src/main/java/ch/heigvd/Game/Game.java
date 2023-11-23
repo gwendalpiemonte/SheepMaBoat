@@ -51,16 +51,23 @@ public class Game {
         setJ1(new Joueur(nomJoueur1));
         setJ2(new Joueur(nomJoueur2));
     }
-    public void playRound(Joueur play,Joueur wait){
+    public void playRound(Joueur play, Joueur wait) {
+        Scanner scanner = new Scanner(System.in);
+
         System.out.println("\nTour de " + play.getPseudo());
-        System.out.println("Entrez la colonne où tirer  (A,B,C,D,E,F,G,H,I,J) :");
-        char colonne = scanner.next().charAt(0);
-        System.out.println("Entrez la ligne où tirer   (1,2,3,4,5,6,7,8,9,10) :");
-        int ligne = scanner.nextInt();
+        System.out.println("Entrez la colonne et la ligne où tirer (ex : A3) :");
 
-        Position shoot = new Position(colonne,ligne);
+        String input = scanner.nextLine();
 
-        wait.getTerrainBoats().insert(shoot,'X',true);
+        if (input.length() >= 2) {
+            char colonne = input.charAt(0);
+            int ligne = Integer.parseInt(input.substring(1));
 
+            Position shoot = new Position(colonne, ligne);
+            wait.getTerrainBoats().insert(shoot, 'X', true);
+        } else {
+            System.out.println("Entrée invalide.");
+        }
     }
+
 }

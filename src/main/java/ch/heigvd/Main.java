@@ -18,6 +18,7 @@ public class Main {
                 game.firstRound();
                 game.affiche();
             }
+
             if(game.getRound() % 2 != 0){
                 game.playRound(game.getJ1(), game.getJ2());
                 game.affiche();
@@ -25,6 +26,7 @@ public class Main {
                 game.playRound(game.getJ2(), game.getJ1());
                 game.affiche();
             }
+
             game.nextRound();
         }
 

@@ -86,7 +86,7 @@ public class Terrain {
                         touch = true;
                         System.out.println("Touché");
                         insert(pos,'0',false);
-                        bateau.changePosition(new Position('A',0),bateau.getPositions().indexOf(pos));
+                        bateau.deletePos(new Position('A',0),bateau.getPositions().indexOf(pos));
                         int count = 0;
                         for(Position pos2 : bateau.getPositions()){
                             if(pos2.getColonne() == 'A' && pos2.getLigne() == 0){

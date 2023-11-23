@@ -73,8 +73,7 @@ public class Bateau {
     public LinkedList<Position> getPositions() {
         return positions;
     }
-
-    public void changePosition(Position position, int index){
+    public void deletePos(Position position, int index){
         positions.set(index, position);
     }
 
