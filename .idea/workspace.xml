@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3db338dd-1630-4e3d-827f-3bb940f24494" name="Changes" comment="feat: 99% of the logic is done">
+    <list default="true" id="3db338dd-1630-4e3d-827f-3bb940f24494" name="Changes" comment="feat: creating both client and server CLI">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Bateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Bateau.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Game.java" afterDir="false" />
@@ -76,7 +77,7 @@
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
     "git-widget-placeholder": "F-Battleships-implementation",
-    "last_opened_file_path": "C:/Users/gwend/Documents/Heig-VD/S3/DAI/Practical Content/Java-UDP-Programming",
+    "last_opened_file_path": "C:/Users/gwend/Documents/Heig-VD/SheepMaBoat",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -166,6 +167,7 @@
       <workItem from="1700578909956" duration="481000" />
       <workItem from="1700635243956" duration="2076000" />
       <workItem from="1700751576991" duration="7503000" />
+      <workItem from="1700955666015" duration="1035000" />
     </task>
     <task id="LOCAL-00001" summary="Init project&#10;Close #7">
       <option name="closed" value="true" />

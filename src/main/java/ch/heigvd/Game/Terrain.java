@@ -5,30 +5,20 @@ import java.util.Map;
 
 public class Terrain {
     private static final Map<Character, Integer> mapPositions = new HashMap<>();
-    private Bateau[] bateaux = new Bateau[5];
+    private Bateau[] bateaux = new Bateau[3];
     private final String[] terrain = {
-            "     A   B   C   D   E   F   G   H   I   J",
-            "   ╔═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╗",
-            " 1 ║   ║   ║   ║   ║   ║   ║   ║   ║   ║   ║ ",
-            "   ╠═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╣",
-            " 2 ║   ║   ║   ║   ║   ║   ║   ║   ║   ║   ║ ",
-            "   ╠═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╣",
-            " 3 ║   ║   ║   ║   ║   ║   ║   ║   ║   ║   ║ ",
-            "   ╠═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╣",
-            " 4 ║   ║   ║   ║   ║   ║   ║   ║   ║   ║   ║ ",
-            "   ╠═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╣",
-            " 5 ║   ║   ║   ║   ║   ║   ║   ║   ║   ║   ║ ",
-            "   ╠═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╣",
-            " 6 ║   ║   ║   ║   ║   ║   ║   ║   ║   ║   ║ ",
-            "   ╠═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╣",
-            " 7 ║   ║   ║   ║   ║   ║   ║   ║   ║   ║   ║ ",
-            "   ╠═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╣",
-            " 8 ║   ║   ║   ║   ║   ║   ║   ║   ║   ║   ║ ",
-            "   ╠═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╣",
-            " 9 ║   ║   ║   ║   ║   ║   ║   ║   ║   ║   ║ ",
-            "   ╠═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╣",
-            "10 ║   ║   ║   ║   ║   ║   ║   ║   ║   ║   ║ ",
-            "   ╚═══╩═══╩═══╩═══╩═══╩═══╩═══╩═══╩═══╩═══╝"
+            "     A   B   C   D   E",
+            "   ╔═══╦═══╦═══╦═══╦═══╗ ",
+            " 1 ║   ║   ║   ║   ║   ║ ",
+            "   ╠═══╬═══╬═══╬═══╬═══╣ ",
+            " 2 ║   ║   ║   ║   ║   ║ ",
+            "   ╠═══╬═══╬═══╬═══╬═══╣ ",
+            " 3 ║   ║   ║   ║   ║   ║ ",
+            "   ╠═══╬═══╬═══╬═══╬═══╣ ",
+            " 4 ║   ║   ║   ║   ║   ║ ",
+            "   ╠═══╬═══╬═══╬═══╬═══╣ ",
+            " 5 ║   ║   ║   ║   ║   ║ ",
+            "   ╚═══╩═══╩═══╩═══╩═══╝ ",
     };
 
     public Terrain(boolean bat){
@@ -46,21 +36,18 @@ public class Terrain {
     public String[] getTerrain() {
         return terrain;
     }
-    private int parsePos(int val){
+    public Bateau[] getBateaux() {
+        return bateaux;
+    }
+
+    public void insert(Position position, char obj){
         mapPositions.put('A', 1);
         mapPositions.put('B', 2);
         mapPositions.put('C', 3);
         mapPositions.put('D', 4);
         mapPositions.put('E', 5);
-        mapPositions.put('F', 6);
-        mapPositions.put('G', 7);
-        mapPositions.put('H', 8);
-        mapPositions.put('I', 9);
-        mapPositions.put('J', 10);
-        return mapPositions.get(val);
-    }
-    public void insert(Position position, char obj){
-        int x = parsePos(position.getColonne());
+
+        int x = mapPositions.get(position.getColonne());
         x = x * 4 + 1;
 
         int y = position.getLigne();
@@ -75,8 +62,14 @@ public class Terrain {
             System.out.println("Error");
         }
     }
-    public void insert(Position position, char obj, Terrain autreTerrain){
-        int x = parsePos(position.getColonne());
+    public void insert(Position position, Terrain autreTerrain){
+        mapPositions.put('A', 1);
+        mapPositions.put('B', 2);
+        mapPositions.put('C', 3);
+        mapPositions.put('D', 4);
+        mapPositions.put('E', 5);
+
+        int x = mapPositions.get(position.getColonne());
         x = x * 4 + 1;
 
         int y = position.getLigne();
@@ -84,7 +77,7 @@ public class Terrain {
 
         if (y >= 0 && y < getTerrain().length && x >= 0 && x < getTerrain()[0].length()) {
             char[] ligneArray = getTerrain()[y].toCharArray();
-            ligneArray[x] = obj;
+            ligneArray[x] = 'X';
             getTerrain()[y] = new String(ligneArray);
 
         } else {
@@ -107,6 +100,7 @@ public class Terrain {
                     }
                     if (count == bateau.getTaille()) {
                         System.out.println("Coulé");
+                        bateau.setCoule(true);
                     }
                 }
             }

@@ -23,5 +23,20 @@ public class Joueur {
     public void affiche(){
         System.out.println(this.pseudo);
     }
+    public boolean win(){
+        boolean win = false;
 
+        for(Bateau bateau : getTerrainBoats().getBateaux()){
+            if(bateau.isCoule()){
+                win = true;
+            } else {
+                win = false;
+                break;
+            }
+        }
+
+        return win;
+    }
 }
+
+
