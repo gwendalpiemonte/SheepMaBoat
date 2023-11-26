@@ -110,9 +110,11 @@ public class Terrain {
             autreTerrain.insert(position,'X');
         }
     }
-    public void affiche(){
+    public String affiche(){
+        String result = "";
         for (String ligne : this.getTerrain()) {
-            System.out.println(ligne);
+            result += ligne + "\n";
         }
+        return result;
     }
 }

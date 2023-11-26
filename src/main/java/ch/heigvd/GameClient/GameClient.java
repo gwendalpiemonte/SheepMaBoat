@@ -1,16 +1,18 @@
 package ch.heigvd.GameClient;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class GameClient {
+    final static String EOT = "\u0004";
     public static void start(String serverIP, int serverPort) {
 
         try (Socket socket = new Socket(serverIP, serverPort);
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              Scanner in = new Scanner(socket.getInputStream());
+             BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              Scanner consoleInput = new Scanner(System.in)) {
 
             // Lire les messages du serveur
@@ -26,7 +28,11 @@ public class GameClient {
                 out.println(userMessage);
 
                 // Lire la réponse du serveur
-                System.out.println(in.nextLine());
+                String line;
+                while ((line = input.readLine()) != null && !line.equals(EOT)) {
+                    System.out.println(line);
+                }
+
             }
 
         } catch (IOException e) {

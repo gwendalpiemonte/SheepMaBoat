@@ -1,6 +1,7 @@
 package ch.heigvd.GameServer;
 
 import ch.heigvd.Game.Game;
+import ch.heigvd.Game.Joueur;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,7 +20,7 @@ public class GameServer {
     private final List<ClientHandler> activeClients = new ArrayList<>();
     private final ExecutorService executor = Executors.newFixedThreadPool(MAX_CLIENTS);
     private boolean isRunning = true;
-    private final Game game = new Game();
+    private final Game currentGame = new Game();
 
     public void start(String serverIP, int serverPort) {
         try {
@@ -37,9 +38,10 @@ public class GameServer {
 
                     if (activeClients.size() < MAX_CLIENTS) {
                         // Utiliser le thread pool pour gérer la communication avec le client
-                        ClientHandler clientHandler = new ClientHandler(clientSocket, game);
+                        ClientHandler clientHandler = new ClientHandler(clientSocket, currentGame, activeClients);
                         activeClients.add(clientHandler);
                         executor.submit(clientHandler);
+
                     } else {
                         System.out.println("Connection refused for : " + clientSocket);
 

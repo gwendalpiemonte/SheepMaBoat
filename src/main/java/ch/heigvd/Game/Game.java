@@ -10,14 +10,11 @@ public class Game {
     public void nextRound(){
         this.setRound(this.getRound() + 1);
     }
-    public void affiche(){
-        getJ1().affiche();
-        getJ1().getTerrainBoats().affiche();
-        getJ1().getTerrainShoots().affiche();
-        System.out.println("\n-------------------------------------");
-        getJ2().affiche();
-        getJ2().getTerrainBoats().affiche();
-        getJ2().getTerrainShoots().affiche();
+
+    public String printGame(Joueur player){
+        return  player.getUsername() + "\n" +
+                player.getTerrainBoats().affiche()+ "\n" +
+                player.getTerrainShoots().affiche();
     }
 
     public void setPlayer(Joueur j) {
@@ -82,5 +79,4 @@ public class Game {
             System.out.println("Entrée invalide.");
         }
     }
-
 }
