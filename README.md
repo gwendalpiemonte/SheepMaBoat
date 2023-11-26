@@ -99,5 +99,5 @@ Command : `Replay`
 |`denied`|Your oppenent deserted.|
 
 ### 4 - Examples
-![Sequence diagram]()
+![Sequence diagram](/ProtocolSheepMyBoat.drawio.png)
 
