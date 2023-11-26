@@ -52,7 +52,7 @@ The server manage the game's logic between the two players.
 ### 2 - Transport protocol
 The SheepMyBoat protocol uses the **TCP protocol**. The server runs on port **3333**.  
 The client has to know the IP address of the server to connect to. It establishes the connection with the server.   
-The client closes the connection when he dosen't want to play more.   
+The client closes the connection when he dosen't want to play more games.   
  
 ### 3 - Messages
 #### Connect to the server
