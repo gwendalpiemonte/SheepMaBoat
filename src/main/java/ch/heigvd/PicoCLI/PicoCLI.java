@@ -26,7 +26,7 @@ public class PicoCLI{
         @CommandLine.Option(
                 names = {"-p", "--port"},
                 description = "Port to connect.")
-        private int port = 11111;
+        private int port = 3333;
         @Override
         public void run() {
             GameClient.start(address, port);
@@ -47,7 +47,7 @@ public class PicoCLI{
                 names = {"-p", "--port"},
                 description = "Port to connect.")
 
-        private int port = 11111;
+        private int port = 3333;
         @Override
         public void run() {
             GameServer game = new GameServer();

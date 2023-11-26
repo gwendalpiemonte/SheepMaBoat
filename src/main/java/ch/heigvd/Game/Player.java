@@ -1,23 +1,21 @@
 package ch.heigvd.Game;
 
-import ch.heigvd.GameServer.ClientHandler;
-
-public class Joueur {
+public class Player {
     private final String username;
-    private final Terrain terrainBoats = new Terrain(true);
-    private final Terrain terrainShoots = new Terrain(false);
+    private final PlayBoard terrainBoats = new PlayBoard(true);
+    private final PlayBoard terrainShoots = new PlayBoard(false);
 
-    public Joueur(String username){
+    public Player(String username){
         this.username = username;
     }
 
     public String getUsername() {
         return username;
     }
-    public Terrain getTerrainBoats() {
+    public PlayBoard getPlayBoardBoats() {
         return terrainBoats;
     }
-    public Terrain getTerrainShoots() {
+    public PlayBoard getPlayBoardShoots() {
         return terrainShoots;
     }
     public void affiche(){
@@ -26,8 +24,8 @@ public class Joueur {
     public boolean win(){
         boolean win = false;
 
-        for(Bateau bateau : getTerrainBoats().getBateaux()){
-            if(bateau.isCoule()){
+        for(Boat boat : getPlayBoardBoats().getBoats()){
+            if(boat.isDrowned()){
                 win = true;
             } else {
                 win = false;

@@ -1,7 +1,7 @@
 package ch.heigvd.GameServer;
 
 import ch.heigvd.Game.Game;
-import ch.heigvd.Game.Joueur;
+import ch.heigvd.Game.Player;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +16,7 @@ public class ClientHandler implements Runnable{
     private Scanner in;
     private final Game currentGame;
     private final List<ClientHandler> activeClients;
-    private Joueur player;
+    private Player player;
     private boolean isReady = false;
     private final String EOT = "\u0004";
 
@@ -63,7 +63,7 @@ public class ClientHandler implements Runnable{
         out.println(message + EOT);
     }
 
-    public Joueur getPlayer() { return this.player; }
+    public Player getPlayer() { return this.player; }
 
     public synchronized void handleMessage(String[] message) {
         switch (message[0]) {
@@ -75,7 +75,7 @@ public class ClientHandler implements Runnable{
 
     private synchronized String addUsername(String message) {
         if (message.length() <= 15 && message.length() >= 3) {
-            this.player = new Joueur(message);
+            this.player = new Player(message);
             currentGame.setPlayer(this.player);
             return "Welcome, " + message + "! Please write start when you are ready! Use the command: start";
         } else if(message.length() < 3) {

@@ -1,7 +1,7 @@
 package ch.heigvd.GameServer;
 
 import ch.heigvd.Game.Game;
-import ch.heigvd.Game.Joueur;
+import ch.heigvd.Game.Player;
 
 import java.io.IOException;
 import java.io.PrintWriter;
