@@ -2,6 +2,7 @@ package ch.heigvd.GameServer;
 
 import ch.heigvd.Game.Game;
 import ch.heigvd.Game.Player;
+import ch.heigvd.Game.Position;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,7 +19,9 @@ public class ClientHandler implements Runnable{
     private final List<ClientHandler> activeClients;
     private Player player;
     private boolean isReady = false;
-    private final String EOT = "\u0004";
+    private final String EOT = "END";
+
+    private boolean check = false;
 
     public ClientHandler(Socket socket, Game game, List<ClientHandler> activeClients) {
         this.clientSocket = socket;
@@ -38,6 +41,18 @@ public class ClientHandler implements Runnable{
             out.println("Welcome to Battlesheep! Please choose a username. Use the command: username <username>");
 
             while (true) {
+                // idee pour afficher a qui de jouer etc
+                /*
+                if(check){
+                    if(currentGame.getRound() % 2 != 0){
+                        activeClients.get(0).sendMessage("It's your turn to play!");
+                        activeClients.get(1).sendMessage("It's your opponent's turn to play!");
+                    } else {
+                        activeClients.get(1).sendMessage("It's your turn to play!");
+                        activeClients.get(0).sendMessage("It's your opponent's turn to play!");
+                    }
+                }
+                */
                 String[] clientMessage = in.nextLine().split(" ");
                 handleMessage(clientMessage);
                 System.out.println("Client " + clientSocket + " says: " + Arrays.toString(clientMessage));
@@ -60,7 +75,8 @@ public class ClientHandler implements Runnable{
     }
 
     public void sendMessage(String message) {
-        out.println(message + EOT);
+        out.println(message);
+        out.println(EOT); // il fallait l'envoyer en deux fois pour que ca marche et pasd l'ajouter a la fin de chaque message
     }
 
     public Player getPlayer() { return this.player; }
@@ -69,6 +85,7 @@ public class ClientHandler implements Runnable{
         switch (message[0]) {
             case "username" -> sendMessage(addUsername(message.length < 2 ? "" : message[1]));
             case "start" -> startGame();
+            case "shoot" -> shootSheep(message.length < 2 ? "" : message[1]);
             default -> sendMessage("We didn't understand your message, try again.");
         };
     }
@@ -86,12 +103,32 @@ public class ClientHandler implements Runnable{
             return "Your username: " + message + " doesn't fit our policies. Use the command: username <username [3-15]>";
         }
     }
-
     private void startGame() {
         this.isReady = true;
         if(currentGame.isReady() && activeClients.get(0).isReady() && activeClients.get(1).isReady()) {
+            check = true;
             for(ClientHandler activeClient : activeClients)
                 activeClient.sendMessage(currentGame.printGame(activeClient.getPlayer()));
+        }
+    }
+    private void shootSheep(String message) {
+
+        char column = message.charAt(0);
+        int row = Integer.parseInt(message.substring(1));
+
+        if(message.length() == 2) {
+            if(currentGame.getRound() % 2 != 0){
+                currentGame.playRound(activeClients.get(0).getPlayer(), activeClients.get(1).getPlayer(), column, row);
+                activeClients.get(0).sendMessage(currentGame.printGame(activeClients.get(0).getPlayer()) + "\n" + "It's your opponent's turn to play!");
+                activeClients.get(1).sendMessage(currentGame.printGame(activeClients.get(1).getPlayer()) + "\n" + "It's your turn to play!");
+            } else {
+                currentGame.playRound(activeClients.get(1).getPlayer(), activeClients.get(0).getPlayer(), column, row);
+                activeClients.get(0).sendMessage(currentGame.printGame(activeClients.get(0).getPlayer()) + "\n" + "It's your turn to play!");
+                activeClients.get(1).sendMessage(currentGame.printGame(activeClients.get(1).getPlayer()) + "\n" + "It's your opponent's turn to play!");
+            }
+
+            currentGame.nextRound();
+
         }
     }
 }

@@ -1,8 +1,10 @@
 package ch.heigvd;
 
 import ch.heigvd.Game.*;
-//import ch.heigvd.PicoCLI.PicoCLI;
-//import picocli.CommandLine;
+import ch.heigvd.GameClient.GameClient;
+import ch.heigvd.GameServer.GameServer;
+import ch.heigvd.PicoCLI.PicoCLI;
+import picocli.CommandLine;
 
 import java.util.Scanner;
 
@@ -12,7 +14,7 @@ public class Main {
 
         // Initialisation du jeu
         Game game = new Game();
-
+/*
         // Boucle de jeu
         while (true){
             if(game.getRound() == 1){
@@ -35,12 +37,15 @@ public class Main {
         }
 
 
+*/
 
-        /*
         CommandLine main = new CommandLine(new PicoCLI());
         main.execute(args);
 
         System.exit(0);
-*/
+
+
+
+
     }
 }

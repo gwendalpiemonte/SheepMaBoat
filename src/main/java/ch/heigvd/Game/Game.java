@@ -1,5 +1,7 @@
 package ch.heigvd.Game;
 
+import ch.heigvd.GameClient.GameClient;
+
 import java.util.Scanner;
 
 public class Game {
@@ -52,27 +54,13 @@ public class Game {
         setPlayer(new Player(nomJoueur2));
     }
 
-    public void playRound(Player play, Player wait) {
-        Scanner scanner = new Scanner(System.in);
+    public void playRound(Player play, Player wait, char column, int row){
+        Position shoot = new Position(column, row);
+        wait.getPlayBoardBoats().insert(shoot, play.getPlayBoardShoots());
 
-        System.out.println("\nRound of " + play.getUsername());
-        System.out.println("Enter the column and the row :");
-
-        String input = scanner.nextLine();
-
-        if (input.length() >= 2) {
-            char column = input.charAt(0);
-            int row = Integer.parseInt(input.substring(1));
-
-            Position shoot = new Position(column, row);
-            wait.getPlayBoardBoats().insert(shoot, play.getPlayBoardShoots());
-
-            if(wait.win()){
-                System.out.println(play.getUsername() + " won !");
-                System.exit(0);
-            }
-        } else {
-            System.out.println("Error");
+        if(wait.win()){
+            System.out.println(play.getUsername() + " won !");
+            System.exit(0);
         }
     }
 }

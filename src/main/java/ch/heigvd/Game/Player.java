@@ -1,5 +1,7 @@
 package ch.heigvd.Game;
 
+import ch.heigvd.GameClient.GameClient;
+
 public class Player {
     private final String username;
     private final PlayBoard terrainBoats = new PlayBoard(true);
