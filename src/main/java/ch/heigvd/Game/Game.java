@@ -15,7 +15,7 @@ public class Game {
         getJ1().affiche();
         getJ1().getTerrainBoats().affiche();
         getJ1().getTerrainShoots().affiche();
-        System.out.println("\n-----------------------------------------------");
+        System.out.println("\n-------------------------------------");
         getJ2().affiche();
         getJ2().getTerrainBoats().affiche();
         getJ2().getTerrainShoots().affiche();
@@ -65,7 +65,12 @@ public class Game {
             int ligne = Integer.parseInt(input.substring(1));
 
             Position shoot = new Position(colonne, ligne);
-            wait.getTerrainBoats().insert(shoot, 'X', play.getTerrainShoots());
+            wait.getTerrainBoats().insert(shoot, play.getTerrainShoots());
+
+            if(wait.win()){
+                System.out.println(play.getPseudo() + " a gagné !");
+                System.exit(0);
+            }
         } else {
             System.out.println("Entrée invalide.");
         }

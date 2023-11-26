@@ -1,8 +1,8 @@
 package ch.heigvd.Game;
 
 public class Position {
-    private final char colonne; // A B C D E F G H I J
-    private final int ligne;    // 1 2 3 4 5 6 7 8 9 10
+    private final char colonne; // A B C D E
+    private final int ligne;    // 1 2 3 4 5
 
     public Position(char colonne, int ligne){
         this.colonne = colonne;
