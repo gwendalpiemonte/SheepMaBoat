@@ -9,6 +9,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        /*
+
         // Initialisation du jeu
         Game game = new Game();
 
@@ -29,6 +31,13 @@ public class Main {
 
             game.nextRound();
         }
+
+        */
+
+        CommandLine main = new CommandLine(new PicoCLI());
+        main.execute(args);
+
+        System.exit(0);
 
     }
 }

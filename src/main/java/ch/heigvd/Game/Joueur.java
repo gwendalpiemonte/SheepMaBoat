@@ -1,18 +1,18 @@
 package ch.heigvd.Game;
 
-import java.util.Random;
+import ch.heigvd.GameServer.ClientHandler;
 
 public class Joueur {
-    private final String pseudo;
+    private final String username;
     private final Terrain terrainBoats = new Terrain(true);
     private final Terrain terrainShoots = new Terrain(false);
 
-    public Joueur(String pseudo){
-        this.pseudo = pseudo;
+    public Joueur(String username){
+        this.username = username;
     }
 
-    public String getPseudo() {
-        return pseudo;
+    public String getUsername() {
+        return username;
     }
     public Terrain getTerrainBoats() {
         return terrainBoats;
@@ -21,7 +21,7 @@ public class Joueur {
         return terrainShoots;
     }
     public void affiche(){
-        System.out.println(this.pseudo);
+        System.out.println(this.username);
     }
     public boolean win(){
         boolean win = false;
@@ -38,5 +38,3 @@ public class Joueur {
         return win;
     }
 }
-
-

@@ -50,7 +50,8 @@ public class PicoCLI{
         private int port = 11111;
         @Override
         public void run() {
-            GameServer.start(address, port);
+            GameServer game = new GameServer();
+            game.start(address, port);
         }
     }
 }
