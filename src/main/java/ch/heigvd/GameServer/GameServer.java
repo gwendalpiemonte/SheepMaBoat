@@ -1,5 +1,8 @@
 package ch.heigvd.GameServer;
 
+import ch.heigvd.Game.Game;
+import ch.heigvd.Game.Player;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetAddress;
@@ -8,13 +11,18 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class GameServer {
-    private static final int MAX_CLIENTS = 2;
-    private static final List<ClientHandler> activeClients = new ArrayList<>();
-    private static boolean isRunning = true;
 
-    public static void start(String serverIP, int serverPort) {
+    private final int MAX_CLIENTS = 2;
+    private final List<ClientHandler> activeClients = new ArrayList<>();
+    private final ExecutorService executor = Executors.newFixedThreadPool(MAX_CLIENTS);
+    private boolean isRunning = true;
+    private Game currentGame;
+
+    public void start(String serverIP, int serverPort) {
         try {
             InetAddress serverAddress = InetAddress.getByName(serverIP);
 
@@ -28,17 +36,23 @@ public class GameServer {
                     Socket clientSocket = serverSocket.accept();
                     System.out.println("New connection : " + clientSocket);
 
+                    if(activeClients.isEmpty()) {
+                        currentGame = new Game();
+                        System.out.println("Preparation of a new game.");
+                    }
+
                     if (activeClients.size() < MAX_CLIENTS) {
-                        // Créer un thread pour gérer la communication avec le client
-                        ClientHandler clientHandler = new ClientHandler(clientSocket);
+                        // Utiliser le thread pool pour gérer la communication avec le client
+                        ClientHandler clientHandler = new ClientHandler(clientSocket, currentGame, activeClients, executor);
                         activeClients.add(clientHandler);
-                        new Thread(clientHandler).start();
+                        executor.submit(clientHandler);
+
                     } else {
                         System.out.println("Connection refused for : " + clientSocket);
 
                         // Refuser la connexion si le serveur est plein
                         PrintWriter refusedOut = new PrintWriter(clientSocket.getOutputStream(), true);
-                        refusedOut.println("Server is full. Try again later.");
+                        refusedOut.println("ERR_1");
 
                         // Fermer la socket du client refusé
                         clientSocket.close();
@@ -49,10 +63,13 @@ public class GameServer {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            // Arrêter le pool après que toutes les tâches ont été soumises
+            executor.shutdown();
         }
     }
 
-    private static void handleShutdownCommand(ServerSocket serverSocket) {
+    private void handleShutdownCommand(ServerSocket serverSocket) {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Enter 'shutdown' to stop the server.");
             while (isRunning()) {
@@ -67,11 +84,11 @@ public class GameServer {
         }
     }
 
-    private static synchronized boolean isRunning() {
+    private synchronized boolean isRunning() {
         return isRunning;
     }
 
-    private static synchronized void stopServer(ServerSocket serverSocket) {
+    private synchronized void stopServer(ServerSocket serverSocket) {
         try {
             isRunning = false;
             // Fermer le ServerSocket pour débloquer l'accept

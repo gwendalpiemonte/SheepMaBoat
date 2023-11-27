@@ -1,18 +1,18 @@
 package ch.heigvd.Game;
 
 public class Position {
-    private final char colonne; // A B C D E
-    private final int ligne;    // 1 2 3 4 5
+    private final char column; // A B C D E
+    private final int row;     // 1 2 3 4 5
 
-    public Position(char colonne, int ligne){
-        this.colonne = colonne;
-        this.ligne = ligne;
+    public Position(char column, int row){
+        this.column = column;
+        this.row = row;
     }
 
-    public char getColonne() {
-        return colonne;
+    public char getColumn() {
+        return column;
     }
-    public int getLigne() {
-        return ligne;
+    public int getRow() {
+        return row;
     }
 }

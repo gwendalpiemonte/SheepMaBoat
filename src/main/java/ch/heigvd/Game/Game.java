@@ -1,79 +1,40 @@
 package ch.heigvd.Game;
 
+import ch.heigvd.GameClient.GameClient;
+
 import java.util.Scanner;
 
 public class Game {
-    private final Scanner scanner = new Scanner(System.in);
-    private Joueur j1;
-    private Joueur j2;
-    private int round = 1;
+    private final Player[] players = new Player[2];
+    private boolean hasWinner = false;
 
-    public void nextRound(){
-        this.setRound(this.getRound() + 1);
+    public String printGame(Player player){
+        return  "Player : " + player.getUsername() + "_" +
+                "Boats playboard _" +
+                player.getPlayBoardBoats().display()+ "_" +
+                "Shoots playboard _" +
+                player.getPlayBoardShoots().display();
     }
-    public void affiche(){
-        getJ1().affiche();
-        getJ1().getTerrainBoats().affiche();
-        getJ1().getTerrainShoots().affiche();
-        System.out.println("\n-------------------------------------");
-        getJ2().affiche();
-        getJ2().getTerrainBoats().affiche();
-        getJ2().getTerrainShoots().affiche();
+    public void setPlayer(Player j) {
+        if(players[0] == null)
+            players[0] = j;
+        else
+            players[1] = j;
     }
-    public void setJ1(Joueur j1) {
-        this.j1 = j1;
+    public boolean isHasWinner() {
+        return hasWinner;
     }
-    public void setJ2(Joueur j2) {
-        this.j2 = j2;
-    }
-    public Joueur getJ1() {
-        return j1;
-    }
-    public Joueur getJ2() {
-        return j2;
-    }
-    public int getRound() {
-        return round;
-    }
-    public void setRound(int round) {
-        this.round = round;
-    }
-    public void firstRound(){
-        // Saisie du nom du Joueur 1
-        System.out.print("Entrez le nom du Joueur 1 : ");
-        String nomJoueur1 = scanner.nextLine();
-        setJ1(new Joueur(nomJoueur1));
+    public String playRound(Player play, Player wait, char column, int row){
+        Position shoot = new Position(column, row);
+        String result = "";
 
-        // Saisie du nom du Joueur 2
-        System.out.print("Entrez le nom du Joueur 2 : ");
-        String nomJoueur2 = scanner.nextLine();
-        setJ2(new Joueur(nomJoueur2));
+        result = wait.getPlayBoardBoats().insert(shoot, play.getPlayBoardShoots());
 
-        setJ1(new Joueur(nomJoueur1));
-        setJ2(new Joueur(nomJoueur2));
-    }
-    public void playRound(Joueur play, Joueur wait) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("\nTour de " + play.getPseudo());
-        System.out.println("Entrez la colonne et la ligne où tirer (ex : A3) :");
-
-        String input = scanner.nextLine();
-
-        if (input.length() >= 2) {
-            char colonne = input.charAt(0);
-            int ligne = Integer.parseInt(input.substring(1));
-
-            Position shoot = new Position(colonne, ligne);
-            wait.getTerrainBoats().insert(shoot, play.getTerrainShoots());
-
-            if(wait.win()){
-                System.out.println(play.getPseudo() + " a gagné !");
-                System.exit(0);
-            }
-        } else {
-            System.out.println("Entrée invalide.");
+        if(wait.isLosing()){
+            result = play.getUsername() + " won !";
+            hasWinner = true;
         }
-    }
 
+        return result;
+    }
 }
