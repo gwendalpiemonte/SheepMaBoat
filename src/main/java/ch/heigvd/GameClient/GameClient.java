@@ -28,33 +28,11 @@ public class GameClient {
                 out.println(userMessage);
 
                 // Lire la réponse du serveur
-                // Lire la réponse du serveur
                 String line;
                 while ((line = input.readLine()) != null && !line.equals("END")) {
                     System.out.println(line);
                 }
 
-
-                // Une idee pour jouer les tours
-                /*
-                // Lire la réponse du serveur
-                String line;
-                while ((line = input.readLine()) != null) {
-
-
-                    if (line.equals("END")) {
-                        break;
-
-                    } else if (line.equals("PLAY")) {
-                        System.out.println("play");
-                        break;
-
-                    } else if (line.equals("WAIT")) {
-
-                    }
-                    System.out.println(line);
-                }
-                 */
             }
 
         } catch (IOException e) {

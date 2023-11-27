@@ -40,10 +40,10 @@ public class Boat {
         boolean check = false;
 
         while(!check){
-            Boat[] boats = new Boat[3];
-            boats[0] = new Boat(3,'A');
-            boats[1] = new Boat(3,'B');
-            boats[2] = new Boat(2,'C');
+            Boat[] boats = new Boat[1];
+            boats[0] = new Boat(2,'A');
+            //boats[1] = new Boat(3,'B');
+            //boats[2] = new Boat(2,'C');
 
             check = true;
 

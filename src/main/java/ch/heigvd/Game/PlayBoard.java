@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class PlayBoard {
     private static final Map<Character, Integer> mapPositions = new HashMap<>();
-    private Boat[] boats = new Boat[3];
+    private Boat[] boats = new Boat[1];
     private final String[] playBoard = {
             "     A   B   C   D   E",
             "   ╔═══╦═══╦═══╦═══╦═══╗ ",

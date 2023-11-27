@@ -8,10 +8,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/GameClient/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/GameClient/GameClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/GameServer/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/GameServer/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Main.java" afterDir="false" />
     </list>
-    <list id="6dbf84b9-dd6d-4f70-9b70-e0ba565e5e5a" name="Changes by gwend" comment="" />
+    <list id="5649fdcb-3f0a-4251-8961-2e85c73978b8" name="Changes by gwend" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Boat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Boat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/PlayBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/PlayBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/GameServer/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/GameServer/ClientHandler.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,13 +42,6 @@
     &quot;assignee&quot;: &quot;gwendalpiemonte&quot;
   }
 }</component>
-  <component name="GithubProjectSettings">
-    <option name="branchProtectionPatterns">
-      <list>
-        <option value="main" />
-      </list>
-    </option>
-  </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -52,6 +49,24 @@
         <option name="url" value="git@github.com:gwendalpiemonte/SheepMaBoat.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/ch/heigvd/GameServer/ClientHandler.java">
+      <ranges>
+        <range start1="21" end1="21" start2="21" end2="22" changelist="3db338dd-1630-4e3d-827f-3bb940f24494" />
+        <range start1="26" end1="27" start2="27" end2="27" changelist="5649fdcb-3f0a-4251-8961-2e85c73978b8" />
+        <range start1="102" end1="127" start2="102" end2="116" changelist="5649fdcb-3f0a-4251-8961-2e85c73978b8" />
+        <range start1="156" end1="157" start2="145" end2="146" changelist="5649fdcb-3f0a-4251-8961-2e85c73978b8" />
+        <range start1="165" end1="170" start2="154" end2="200" changelist="3db338dd-1630-4e3d-827f-3bb940f24494" />
+        <range start1="171" end1="173" start2="201" end2="203" changelist="3db338dd-1630-4e3d-827f-3bb940f24494" />
+        <range start1="174" end1="176" start2="204" end2="206" changelist="3db338dd-1630-4e3d-827f-3bb940f24494" />
+        <range start1="177" end1="192" start2="207" end2="225" changelist="3db338dd-1630-4e3d-827f-3bb940f24494" />
+        <range start1="193" end1="210" start2="226" end2="237" changelist="3db338dd-1630-4e3d-827f-3bb940f24494" />
+        <range start1="211" end1="211" start2="238" end2="240" changelist="3db338dd-1630-4e3d-827f-3bb940f24494" />
+        <range start1="212" end1="212" start2="241" end2="251" changelist="3db338dd-1630-4e3d-827f-3bb940f24494" />
+        <range start1="213" end1="213" start2="252" end2="254" changelist="3db338dd-1630-4e3d-827f-3bb940f24494" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -68,6 +83,7 @@
 }</component>
   <component name="ProjectId" id="2XqkaP28X1AiPg8M2pnUbYWKK7U" />
   <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -99,7 +115,7 @@
       <command value="mvn package" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.client 1">
     <configuration name="client 1" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ch.heigvd.Main" />
       <module name="SheepMaBoat" />

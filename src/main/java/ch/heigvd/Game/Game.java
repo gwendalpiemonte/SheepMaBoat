@@ -75,7 +75,7 @@ public class Game {
 
         result = wait.getPlayBoardBoats().insert(shoot, play.getPlayBoardShoots());
 
-        if(wait.lose()){
+        if(wait.isLosing()){
             result = play.getUsername() + " won !";
             hasWinner = true;
             //System.exit(0);

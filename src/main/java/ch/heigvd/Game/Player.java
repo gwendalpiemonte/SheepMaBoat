@@ -30,7 +30,7 @@ public class Player {
     public void affiche(){
         System.out.println(this.username);
     }
-    public boolean lose(){
+    public boolean isLosing(){
         boolean win = false;
 
         for(Boat boat : getPlayBoardBoats().getBoats()){
