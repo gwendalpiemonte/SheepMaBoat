@@ -22,6 +22,9 @@ public class ClientHandler implements Runnable{
     private final String EOT = "END";
     private static boolean oneOrTwo = false; // true player one is playing flase player two is playing
     private String state = "";
+    private static boolean gameIsRunning = false;
+    private boolean setUsernames = false;
+
 
 
 
@@ -43,18 +46,6 @@ public class ClientHandler implements Runnable{
             out.println("Welcome to Battlesheep! Please choose a username. Use the command: username <username>");
 
             while (true) {
-                // idee pour afficher a qui de jouer etc
-                /*
-                if(check){
-                    if(currentGame.getRound() % 2 != 0){
-                        activeClients.get(0).sendMessage("It's your turn to play!");
-                        activeClients.get(1).sendMessage("It's your opponent's turn to play!");
-                    } else {
-                        activeClients.get(1).sendMessage("It's your turn to play!");
-                        activeClients.get(0).sendMessage("It's your opponent's turn to play!");
-                    }
-                }
-                */
                 String[] clientMessage = in.nextLine().split(" ");
                 handleMessage(clientMessage);
                 System.out.println("Client " + clientSocket + " says: " + Arrays.toString(clientMessage));
@@ -84,18 +75,34 @@ public class ClientHandler implements Runnable{
     public Player getPlayer() { return this.player; }
 
     public synchronized void handleMessage(String[] message) {
-        switch (message[0]) {
-            case "username" -> sendMessage(addUsername(message.length < 2 ? "" : message[1]));
-            case "start" -> startGame();
-            case "shoot" -> shootSheep(message.length < 2 ? "" : message[1]);
-            default -> sendMessage("We didn't understand your message, try again.");
-        };
+        if(gameIsRunning){
+            switch (message[0]) {
+                case "shoot" -> shootSheep(message.length < 2 ? "" : message[1]);
+                default -> sendMessage("We didn't understand your message, try again.");
+            };
+        }
+        else{
+
+            if(!(activeClients.get(0).setUsernames && activeClients.get(1).setUsernames)){
+                switch (message[0]) {
+                    case "username" -> sendMessage(addUsername(message.length < 2 ? "" : message[1]));
+                    default -> sendMessage("We didn't understand your message, try again.");
+                };
+            }
+            else{
+                switch (message[0]) {
+                    case "start" -> startGame();
+                    default -> sendMessage("We didn't understand your message, try again.");
+                };
+            }
+        }
     }
 
     private synchronized String addUsername(String message) {
         if (message.length() <= 15 && message.length() >= 3) {
             this.player = new Player(message);
             currentGame.setPlayer(this.player);
+            this.setUsernames = true;
             return "Welcome, " + message + "! Please write start when you are ready! Use the command: start";
         } else if(message.length() < 3) {
             return "Your username: " + message + " is too short. Use the command: username <username [3-15]>";
@@ -108,6 +115,7 @@ public class ClientHandler implements Runnable{
     private void startGame() {
         this.isReady = true;
         if(currentGame.isReady() && activeClients.get(0).isReady() && activeClients.get(1).isReady()) {
+            gameIsRunning = true;
             //client 1 joue en premier
             activeClients.get(0).sendMessage(currentGame.printGame(activeClients.get(0).getPlayer()) + "\n"
                     + "Last shoot in : \n"

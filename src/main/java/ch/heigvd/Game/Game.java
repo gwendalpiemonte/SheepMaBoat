@@ -5,11 +5,11 @@ import ch.heigvd.GameClient.GameClient;
 import java.util.Scanner;
 
 public class Game {
-    /*
+/*
     public static void main(String[] args) {
         GameClient.start("127.0.0.1", 3333);
     }
-    */
+*/
     private final Scanner scanner = new Scanner(System.in);
     private final Player[] players = new Player[2];
     private int round = 1;

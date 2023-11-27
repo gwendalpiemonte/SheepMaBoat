@@ -11,10 +11,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-
+/*
         // Initialisation du jeu
         Game game = new Game();
-/*
+
         // Boucle de jeu
         while (true){
             if(game.getRound() == 1){
@@ -37,16 +37,16 @@ public class Main {
         }
 
 
+
+
+
         GameServer game = new GameServer();
         game.start("127.0.0.1", 3333);
 */
+
         CommandLine main = new CommandLine(new PicoCLI());
         main.execute(args);
 
         System.exit(0);
-
-
-
-
     }
 }
