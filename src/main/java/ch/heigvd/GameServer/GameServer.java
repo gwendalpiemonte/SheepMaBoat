@@ -20,7 +20,7 @@ public class GameServer {
     private final List<ClientHandler> activeClients = new ArrayList<>();
     private final ExecutorService executor = Executors.newFixedThreadPool(MAX_CLIENTS);
     private boolean isRunning = true;
-    private final Game currentGame = new Game();
+    private Game currentGame;
 
     public void start(String serverIP, int serverPort) {
         try {
@@ -36,9 +36,14 @@ public class GameServer {
                     Socket clientSocket = serverSocket.accept();
                     System.out.println("New connection : " + clientSocket);
 
+                    if(activeClients.isEmpty()) {
+                        currentGame = new Game();
+                        System.out.println("Preparation of a new game.");
+                    }
+
                     if (activeClients.size() < MAX_CLIENTS) {
                         // Utiliser le thread pool pour gérer la communication avec le client
-                        ClientHandler clientHandler = new ClientHandler(clientSocket, currentGame, activeClients);
+                        ClientHandler clientHandler = new ClientHandler(clientSocket, currentGame, activeClients, executor);
                         activeClients.add(clientHandler);
                         executor.submit(clientHandler);
 
@@ -47,7 +52,7 @@ public class GameServer {
 
                         // Refuser la connexion si le serveur est plein
                         PrintWriter refusedOut = new PrintWriter(clientSocket.getOutputStream(), true);
-                        refusedOut.println("Server is full. Try again later.");
+                        refusedOut.println("ERR_1");
 
                         // Fermer la socket du client refusé
                         clientSocket.close();

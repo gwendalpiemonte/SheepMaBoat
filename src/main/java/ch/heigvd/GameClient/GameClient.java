@@ -1,5 +1,7 @@
 package ch.heigvd.GameClient;
 
+import ch.heigvd.Game.PlayBoard;
+
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
@@ -29,8 +31,8 @@ public class GameClient {
                 // Lire la réponse du serveur
                 String line;
                 StringBuilder textOut = new StringBuilder();
-                while ((line = bin.readLine()) != null && !line.equals("END")) {
-                    textOut.append(line + " ");
+                while ((line = bin.readLine()) != null && !line.equals(EOT)) {
+                    textOut.append(line);
                 }
 
                 handleMessage(textOut.toString().split("_"));
@@ -50,42 +52,65 @@ public class GameClient {
 
     private void handleMessage(String[] messages) {
         if(messages[0].equals("EGE")){
-            //fermer les sockerts
+            if(messages[1].equals("W")){
+                System.out.println("You won ! \nThe game is over, thanks for playing !");
+            }
+            else if(messages[1].equals("L")){
+                System.out.println("You lose ! \nThe game is over, thanks for playing !");
+            }
+
+            // Fermer la connexion
             closeSocketConnexion();
 
+            out.println("GoodBye");
         }
         else if(messages[0].equals("ERR")){
             switch(messages[1]) {
-                case "1":
-                    System.out.println("You have to use the correct syntax of the shoot command.");
+                case "100":
+                    System.err.println("The server is full. Please try later.");
                     break;
-                case "2":
-                    System.out.println("cacapouette");
+                case "200":
+                    System.err.println("Use command username <username [3 - 15]>.");
                     break;
-                case "3":
-                    System.out.println("You have to enter a shoot to play.");
+                case "201":
+                    System.err.println("The username is too short. Use command username <username [3 - 15]>.");
                     break;
-                case "4":
-                    System.out.println("You have to enter a username first.");
+                case "202":
+                    System.err.println("The username is too long. Use command username <username [3 - 15]>.");
+                    break;
+                case "203":
+                    System.err.println("The username doesn't fit our policies. Use command username <username [3 - 15]>.");
+                    break;
+                case "204":
+                    System.err.println("Before using start command you need to choose a username. Use command username <username [3 - 15]>.");
+                    break;
+                case "300":
+                    System.err.println("You have to enter a shoot to play.");
+                    break;
+                case "400":
+                case "401":
+                    System.err.println("You need to use the command shoot <position -> B1>");
+                    break;
+                case "402":
+                    System.err.println("Your shoot is out of the play board. Please shoot between : " + PlayBoard.minColumn + PlayBoard.minRow + " - " + PlayBoard.maxColumn + PlayBoard.maxRow);
                     break;
                 case "5":
-                    System.out.println("You have to enter start to start the game.");
+                    System.err.println("You have to enter start to start the game.");
                     break;
                 default:
-                    System.out.println("Error, something went wrong.");
+                    System.err.println("Error, something went wrong.");
                     break;
             }
         }
         else if (messages[0].equals("CMD")) {
-            System.out.print("CMD ");
             for(int i = 1 ; i < messages.length ; ++i)
                 System.out.print(messages[i] + " ");
             System.out.println();
         }
-        else if(messages[0].equals("TXT")) {System.out.print("TXT ");
+        else if(messages[0].equals("TXT")) {
+            System.out.flush();
             for(int i = 1 ; i < messages.length ; ++i)
                 System.out.println(messages[i]);
-
         }
     }
 

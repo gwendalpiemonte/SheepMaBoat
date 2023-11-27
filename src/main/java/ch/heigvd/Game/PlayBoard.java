@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PlayBoard {
+    public static char minColumn = 'A', maxColumn = 'E', minRow = '1', maxRow = '5';
     private static final Map<Character, Integer> mapPositions = new HashMap<>();
     private Boat[] boats = new Boat[1];
     private final String[] playBoard = {
@@ -113,7 +114,7 @@ public class PlayBoard {
         }
         return res;
     }
-    public String affiche(){
+    public String display(){
         String result = "";
         for (String ligne : this.getPlayBoard()) {
             result += ligne + "_";
