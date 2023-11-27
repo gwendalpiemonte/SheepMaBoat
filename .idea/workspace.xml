@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3db338dd-1630-4e3d-827f-3bb940f24494" name="Changes" comment="feat: the game is playble over the network">
+    <list default="true" id="3db338dd-1630-4e3d-827f-3bb940f24494" name="Changes" comment="feat: add a command filter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/heigvd/Game/Player.java" afterDir="false" />
@@ -209,7 +209,7 @@
       <workItem from="1701033050289" duration="25000" />
       <workItem from="1701033736760" duration="5333000" />
       <workItem from="1701077174145" duration="7449000" />
-      <workItem from="1701104161454" duration="1380000" />
+      <workItem from="1701104161454" duration="5640000" />
     </task>
     <task id="LOCAL-00001" summary="Init project&#10;Close #7">
       <option name="closed" value="true" />
@@ -315,7 +315,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701084594237</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat: add a command filter">
+      <option name="closed" value="true" />
+      <created>1701105782906</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1701105782906</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,6 +343,7 @@
     <MESSAGE value="feat: tghe code is in english now" />
     <MESSAGE value="feat: can display the playboard and add some stuff" />
     <MESSAGE value="feat: the game is playble over the network" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: the game is playble over the network" />
+    <MESSAGE value="feat: add a command filter" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add a command filter" />
   </component>
 </project>

@@ -15,7 +15,7 @@ public class ClientHandler implements Runnable{
     private final Socket clientSocket;
     private PrintWriter out;
     private Scanner in;
-    private final Game currentGame;
+    private Game currentGame;
     private final List<ClientHandler> activeClients;
     private Player player;
     private boolean isReady = false;
@@ -24,6 +24,7 @@ public class ClientHandler implements Runnable{
     private String state = "";
     private static boolean gameIsRunning = false;
     private boolean setUsernames = false;
+    private  static boolean gameEnded = false;
 
 
 
@@ -76,33 +77,63 @@ public class ClientHandler implements Runnable{
 
     public synchronized void handleMessage(String[] message) {
         if(gameIsRunning){
-            switch (message[0]) {
-                case "shoot" -> shootSheep(message.length < 2 ? "" : message[1]);
-                default -> sendMessage("We didn't understand your message, try again.");
-            };
+            if (message[0].equals("shoot")) {
+                if(message.length != 2){
+                    sendMessage("You have to use the correct syntax of the shoot command.");
+                }
+                else{
+                    shootSheep(message[1]);
+                    /*
+                    char column = message[1].charAt(0);
+                    int row = Integer.parseInt(message[1].substring(1));
+                    if(column < 'A' || column > 'E' || row < 1 || row > 5){
+                        sendMessage("We didn't understand your message, try again.");
+                    }
+                    else{
+                        shootSheep(message[1]);
+                    }
+                     */
+                }
+            }
+            else{
+                sendMessage("You have to enter a shoot to play.");
+            }
         }
         else{
 
-            if(!(activeClients.get(0).setUsernames && activeClients.get(1).setUsernames)){
-                switch (message[0]) {
-                    case "username" -> sendMessage(addUsername(message.length < 2 ? "" : message[1]));
-                    default -> sendMessage("We didn't understand your message, try again.");
-                };
+            if(gameEnded){
+                if (message[0].equals("replay")) {
+                    startGame();
+                }
+                else if (message[0].equals("disconnect")) {
+                    //deconnecter le joueur
+                }
             }
             else{
-                switch (message[0]) {
-                    case "start" -> startGame();
-                    default -> sendMessage("We didn't understand your message, try again.");
-                };
+                if(!this.setUsernames){
+                    if (message[0].equals("username")) {
+                        sendMessage(addUsername(message.length < 2 ? "" : message[1]));
+                    }
+                    else{
+                        sendMessage("You have to enter a username first.");
+                    }
+                }
+                else{
+                    if (message[0].equals("start")) {
+                        startGame();
+                    }
+                    else{
+                        sendMessage("You have to enter start to start the game.");
+                    }
+                }
             }
         }
     }
 
     private synchronized String addUsername(String message) {
         if (message.length() <= 15 && message.length() >= 3) {
-            this.player = new Player(message);
-            currentGame.setPlayer(this.player);
             this.setUsernames = true;
+            this.player = new Player(message);
             return "Welcome, " + message + "! Please write start when you are ready! Use the command: start";
         } else if(message.length() < 3) {
             return "Your username: " + message + " is too short. Use the command: username <username [3-15]>";
@@ -114,8 +145,16 @@ public class ClientHandler implements Runnable{
     }
     private void startGame() {
         this.isReady = true;
-        if(currentGame.isReady() && activeClients.get(0).isReady() && activeClients.get(1).isReady()) {
+        if(activeClients.get(0).isReady() && activeClients.get(1).isReady()) {
+            // Crée une game
+            currentGame = new Game();
+
+            // Y ajoute les joueurs
+            currentGame.setPlayer(activeClients.get(0).getPlayer());
+            currentGame.setPlayer(activeClients.get(1).getPlayer());
+
             gameIsRunning = true;
+            gameEnded = false;
             //client 1 joue en premier
             activeClients.get(0).sendMessage(currentGame.printGame(activeClients.get(0).getPlayer()) + "\n"
                     + "Last shoot in : \n"
@@ -144,6 +183,14 @@ public class ClientHandler implements Runnable{
                         + "Your last shoot in : " + activeClients.get(1).state + "\n"
                         + "Oponent   shoot in : " + activeClients.get(0).state + "\n"
                         + "Use the command : shoot <column [A-E]> <row [1-5]>");}
+                if(currentGame.isHasWinner()){
+                    player1Client.isReady = false;
+                    player2Client.isReady = false;
+                    activeClients.get(0).sendMessage("You lose ! \nyou can replay with the replay command or disconnect with the disconnect command");
+                    activeClients.get(1).sendMessage("You won ! \nyou can replay with the replay command or disconnect with the disconnect command");
+                    oneOrTwo = false;
+                    gameIsRunning = false;
+                }
             }
             //le client 2 joue
             if(!oneOrTwo) {
@@ -153,6 +200,14 @@ public class ClientHandler implements Runnable{
                         + "Your last shoot in : " + activeClients.get(0).state + "\n"
                         + "Oponent   shoot in : " + activeClients.get(1).state  + "\n"
                         + "Use the command : shoot <column [A-E]> <row [1-5]>");
+                if(currentGame.isHasWinner()){
+                    player1Client.isReady = false;
+                    player2Client.isReady = false;
+                    activeClients.get(0).sendMessage("You lose ! \nyou can replay with the replay command or disconnect with the disconnect command");
+                    activeClients.get(1).sendMessage("You won ! \nyou can replay with the replay command or disconnect with the disconnect command");
+                    oneOrTwo = false;
+                    gameIsRunning = false;
+                }
             }
         }
     }

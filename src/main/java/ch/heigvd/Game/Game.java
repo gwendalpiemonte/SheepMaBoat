@@ -9,10 +9,13 @@ public class Game {
     public static void main(String[] args) {
         GameClient.start("127.0.0.1", 3333);
     }
-*/
+
+ */
     private final Scanner scanner = new Scanner(System.in);
     private final Player[] players = new Player[2];
     private int round = 1;
+
+    private boolean hasWinner = false;
 
     public void nextRound(){
         this.setRound(this.getRound() + 1);
@@ -32,6 +35,11 @@ public class Game {
         else
             players[1] = j;
     }
+
+    public boolean isHasWinner() {
+        return hasWinner;
+    }
+
     public Player getP1() {
         return players[0];
     }
@@ -67,9 +75,10 @@ public class Game {
 
         result = wait.getPlayBoardBoats().insert(shoot, play.getPlayBoardShoots());
 
-        if(wait.win()){
+        if(wait.lose()){
             result = play.getUsername() + " won !";
-            System.exit(0);
+            hasWinner = true;
+            //System.exit(0);
         }
 
         return result;

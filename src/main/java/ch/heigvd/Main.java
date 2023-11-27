@@ -35,18 +35,18 @@ public class Main {
 
             game.nextRound();
         }
-
-
-
-
-
         GameServer game = new GameServer();
         game.start("127.0.0.1", 3333);
 */
-
         CommandLine main = new CommandLine(new PicoCLI());
         main.execute(args);
 
         System.exit(0);
+
+
+
+
+
+
     }
 }
