@@ -22,10 +22,10 @@ public class Game {
     }
 
     public String printGame(Player player){
-        return  "Player : " + player.getUsername() + "\n" +
-                "Boats playboard \n" +
-                player.getPlayBoardBoats().affiche()+ "\n" +
-                "Shoots playboard \n" +
+        return  "Player : " + player.getUsername() + "_" +
+                "Boats playboard _" +
+                player.getPlayBoardBoats().affiche()+ "_" +
+                "Shoots playboard _" +
                 player.getPlayBoardShoots().affiche();
     }
 

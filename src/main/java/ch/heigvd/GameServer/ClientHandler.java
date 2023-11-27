@@ -44,7 +44,7 @@ public class ClientHandler implements Runnable{
     @Override
     public void run(){
         try {
-            out.println("Welcome to Battlesheep! Please choose a username. Use the command: username <username>");
+            sendMessage("CMD", "Welcome to Battlesheep! Please choose a username. Use the command: username <username>");
 
             while (true) {
                 String[] clientMessage = in.nextLine().split(" ");
@@ -68,8 +68,9 @@ public class ClientHandler implements Runnable{
         return isReady;
     }
 
-    public void sendMessage(String message) {
-        out.println(message);
+    public void sendMessage(String type, String message) {
+        out.println(type + "_");
+        out.println(message + "_");
         out.println(EOT); // il fallait l'envoyer en deux fois pour que ca marche et pasd l'ajouter a la fin de chaque message
     }
 
@@ -79,7 +80,7 @@ public class ClientHandler implements Runnable{
         if(gameIsRunning){
             if (message[0].equals("shoot")) {
                 if(message.length != 2){
-                    sendMessage("You have to use the correct syntax of the shoot command.");
+                    sendMessage("ERR", "1");
                 }
                 else{
                     shootSheep(message[1]);
@@ -96,16 +97,16 @@ public class ClientHandler implements Runnable{
                 }
             }
             else{
-                sendMessage("You have to enter a shoot to play.");
+                sendMessage("ERR", "3");
             }
         }
         else{
             if(!this.setUsernames){
                 if (message[0].equals("username")) {
-                    sendMessage(addUsername(message.length < 2 ? "" : message[1]));
+                    sendMessage("CMD", addUsername(message.length < 2 ? "" : message[1]));
                 }
                 else{
-                    sendMessage("You have to enter a username first.");
+                    sendMessage("ERR", "4");
                 }
             }
             else{
@@ -113,7 +114,7 @@ public class ClientHandler implements Runnable{
                     startGame();
                 }
                 else{
-                    sendMessage("You have to enter start to start the game.");
+                    sendMessage("ERR", "5");
                 }
             }
         }
@@ -145,9 +146,9 @@ public class ClientHandler implements Runnable{
             gameIsRunning = true;
 
             //client 1 joue en premier
-            activeClients.get(0).sendMessage(currentGame.printGame(activeClients.get(0).getPlayer()) + "\n"
-                    + "Last shoot in : \n"
-                    + "Oponent shoot in : \n"
+            activeClients.get(0).sendMessage("TXT", currentGame.printGame(activeClients.get(0).getPlayer()) + "_"
+                    + "Last    shoot in : _"
+                    + "Oponent shoot in : _"
                     + "Use the command: shoot <column [A-E]> <row [1-5]>");
         }
     }
@@ -211,17 +212,17 @@ public class ClientHandler implements Runnable{
                 activeClients.get(currentPlayer).state = currentGame.playRound(activeClients.get(currentPlayer).getPlayer(), activeClients.get(waitingPlayer).getPlayer(), column, row);
 
                 if(currentGame.isHasWinner()) {
-                    activeClients.get(currentPlayer).sendMessage("You won ! \nThe game is over thanks!");
-                    activeClients.get(waitingPlayer).sendMessage("You lose ! \nThe game is over thanks!");
+                    activeClients.get(currentPlayer).sendMessage("EGE", "You won ! \nThe game is over thanks!");
+                    activeClients.get(waitingPlayer).sendMessage("EGE", "You lose ! \nThe game is over thanks!");
 
                     activeClients.get(currentPlayer).closeSocketConnexion();
                     activeClients.get(waitingPlayer).closeSocketConnexion();
 
                 } else {
                     activeClients.get(currentPlayer).state = column + "" + row + " -> "  + activeClients.get(currentPlayer).state;
-                    activeClients.get(waitingPlayer).sendMessage(currentGame.printGame(activeClients.get(waitingPlayer).getPlayer()) + "\n"
-                            + "Your last shoot in : " + activeClients.get(waitingPlayer).state + "\n"
-                            + "Oponent   shoot in : " + activeClients.get(currentPlayer).state + "\n"
+                    activeClients.get(waitingPlayer).sendMessage("TXT", currentGame.printGame(activeClients.get(waitingPlayer).getPlayer()) + "_"
+                            + "Your last shoot in : " + activeClients.get(waitingPlayer).state + "_"
+                            + "Oponent   shoot in : " + activeClients.get(currentPlayer).state + "_"
                             + "Use the command : shoot <column [A-E]> <row [1-5]>");}
                 }
         }

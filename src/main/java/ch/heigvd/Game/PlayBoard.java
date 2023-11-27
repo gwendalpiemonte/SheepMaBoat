@@ -116,7 +116,7 @@ public class PlayBoard {
     public String affiche(){
         String result = "";
         for (String ligne : this.getPlayBoard()) {
-            result += ligne + "\n";
+            result += ligne + "_";
         }
         return result;
     }

@@ -29,7 +29,8 @@ public class PicoCLI{
         private int port = 3333;
         @Override
         public void run() {
-            GameClient.start(address, port);
+            GameClient gameClient = new GameClient();
+            gameClient.start(address, port);
         }
     }
 
