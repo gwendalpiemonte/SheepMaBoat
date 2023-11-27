@@ -61,12 +61,15 @@ public class PlayBoard {
             System.out.println("Error");
         }
     }
-    public void insert(Position position, PlayBoard otherPlayBoard){
+    public String insert(Position position, PlayBoard otherPlayBoard){
         mapPositions.put('A', 1);
         mapPositions.put('B', 2);
         mapPositions.put('C', 3);
         mapPositions.put('D', 4);
         mapPositions.put('E', 5);
+
+        String res = "";
+        boolean touch = false;
 
         int x = mapPositions.get(position.getColumn());
         x = x * 4 + 1;
@@ -82,12 +85,12 @@ public class PlayBoard {
         } else {
             System.out.println("Error");
         }
-        boolean touch = false;
+
         for(Boat boat : boats){
             for(Position pos : boat.getPositions()) {
                 if (pos.getColumn() == position.getColumn() && pos.getRow() == position.getRow()) {
                     touch = true;
-                    System.out.println("touched");
+                    res = "touched(0)";
                     insert(pos, '0');
                     otherPlayBoard.insert(pos, '0');
                     boat.deletePos(new Position('A', 0), boat.getPositions().indexOf(pos));
@@ -98,16 +101,17 @@ public class PlayBoard {
                         }
                     }
                     if (count == boat.getSize()) {
-                        System.out.println("sinked");
+                        res = "sinked(0)";
                         boat.setDrowned(true);
                     }
                 }
             }
         }
         if(!touch){
-            System.out.println("missed");
+            res = "missed(X)";
             otherPlayBoard.insert(position,'X');
         }
+        return res;
     }
     public String affiche(){
         String result = "";

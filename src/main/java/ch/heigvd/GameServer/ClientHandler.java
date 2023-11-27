@@ -20,8 +20,10 @@ public class ClientHandler implements Runnable{
     private Player player;
     private boolean isReady = false;
     private final String EOT = "END";
+    private static boolean oneOrTwo = false; // true player one is playing flase player two is playing
+    private String state = "";
 
-    private boolean check = false;
+
 
     public ClientHandler(Socket socket, Game game, List<ClientHandler> activeClients) {
         this.clientSocket = socket;
@@ -106,29 +108,43 @@ public class ClientHandler implements Runnable{
     private void startGame() {
         this.isReady = true;
         if(currentGame.isReady() && activeClients.get(0).isReady() && activeClients.get(1).isReady()) {
-            check = true;
-            for(ClientHandler activeClient : activeClients)
-                activeClient.sendMessage(currentGame.printGame(activeClient.getPlayer()));
+            //client 1 joue en premier
+            activeClients.get(0).sendMessage(currentGame.printGame(activeClients.get(0).getPlayer()) + "\n"
+                    + "Last shoot in : \n"
+                    + "Oponent shoot in : \n"
+                    + "Use the command: shoot <column [A-E]> <row [1-5]>");
         }
     }
     private void shootSheep(String message) {
+        Player player1 = activeClients.get(0).getPlayer();
+        Player player2 = activeClients.get(1).getPlayer();
+
+        ClientHandler player1Client = activeClients.get(0);
+        ClientHandler player2Client = activeClients.get(1);
 
         char column = message.charAt(0);
         int row = Integer.parseInt(message.substring(1));
 
         if(message.length() == 2) {
-            if(currentGame.getRound() % 2 != 0){
-                currentGame.playRound(activeClients.get(0).getPlayer(), activeClients.get(1).getPlayer(), column, row);
-                activeClients.get(0).sendMessage(currentGame.printGame(activeClients.get(0).getPlayer()) + "\n" + "It's your opponent's turn to play!");
-                activeClients.get(1).sendMessage(currentGame.printGame(activeClients.get(1).getPlayer()) + "\n" + "It's your turn to play!");
-            } else {
-                currentGame.playRound(activeClients.get(1).getPlayer(), activeClients.get(0).getPlayer(), column, row);
-                activeClients.get(0).sendMessage(currentGame.printGame(activeClients.get(0).getPlayer()) + "\n" + "It's your turn to play!");
-                activeClients.get(1).sendMessage(currentGame.printGame(activeClients.get(1).getPlayer()) + "\n" + "It's your opponent's turn to play!");
+            oneOrTwo = !oneOrTwo;
+
+            // le client 1 joue
+            if(oneOrTwo){
+                activeClients.get(0).state = currentGame.playRound(player1, player2, column, row);
+                activeClients.get(0).state = column + "" + row + " -> "  + activeClients.get(0).state;
+                player2Client.sendMessage(currentGame.printGame(player2) + "\n"
+                        + "Your last shoot in : " + activeClients.get(1).state + "\n"
+                        + "Oponent   shoot in : " + activeClients.get(0).state + "\n"
+                        + "Use the command : shoot <column [A-E]> <row [1-5]>");}
             }
-
-            currentGame.nextRound();
-
+            //le client 2 joue
+            if(!oneOrTwo) {
+                activeClients.get(1).state = currentGame.playRound(player2, player1, column, row);
+                activeClients.get(1).state = column + "" + row + " -> "  + activeClients.get(1).state;
+                player1Client.sendMessage(currentGame.printGame(player1) + "\n"
+                        + "Your last shoot in : " + activeClients.get(0).state + "\n"
+                        + "Oponent   shoot in : " + activeClients.get(1).state  + "\n"
+                        + "Use the command : shoot <column [A-E]> <row [1-5]>");
+            }
         }
     }
-}

@@ -5,6 +5,11 @@ import ch.heigvd.GameClient.GameClient;
 import java.util.Scanner;
 
 public class Game {
+    /*
+    public static void main(String[] args) {
+        GameClient.start("127.0.0.1", 3333);
+    }
+    */
     private final Scanner scanner = new Scanner(System.in);
     private final Player[] players = new Player[2];
     private int round = 1;
@@ -14,8 +19,10 @@ public class Game {
     }
 
     public String printGame(Player player){
-        return  player.getUsername() + "\n" +
+        return  "Player : " + player.getUsername() + "\n" +
+                "Boats playboard \n" +
                 player.getPlayBoardBoats().affiche()+ "\n" +
+                "Shoots playboard \n" +
                 player.getPlayBoardShoots().affiche();
     }
 
@@ -54,13 +61,17 @@ public class Game {
         setPlayer(new Player(nomJoueur2));
     }
 
-    public void playRound(Player play, Player wait, char column, int row){
+    public String playRound(Player play, Player wait, char column, int row){
         Position shoot = new Position(column, row);
-        wait.getPlayBoardBoats().insert(shoot, play.getPlayBoardShoots());
+        String result = "";
+
+        result = wait.getPlayBoardBoats().insert(shoot, play.getPlayBoardShoots());
 
         if(wait.win()){
-            System.out.println(play.getUsername() + " won !");
+            result = play.getUsername() + " won !";
             System.exit(0);
         }
+
+        return result;
     }
 }
