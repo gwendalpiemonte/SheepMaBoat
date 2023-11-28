@@ -6,7 +6,7 @@ import java.util.Map;
 public class PlayBoard {
     public static char minColumn = 'A', maxColumn = 'E', minRow = '1', maxRow = '5';
     private static final Map<Character, Integer> mapPositions = new HashMap<>();
-    private Boat[] boats = new Boat[1];
+    private Boat[] boats = new Boat[3];
     private final String[] playBoard = {
             "     A   B   C   D   E",
             "   ╔═══╦═══╦═══╦═══╦═══╗ ",
