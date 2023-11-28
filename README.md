@@ -44,5 +44,5 @@ java -jar <path-to-jar> client --adrress=127.0.0.1 --port=11111
 
 ### Description
 
-- `-a, --address <outputFile>`: IP address to connect.
-- `-p, --port <outputFile>`: Port to connect.
+- `-a, --address <IP address>`: IP address to connect.
+- `-p, --port <port>`: Port to connect.
