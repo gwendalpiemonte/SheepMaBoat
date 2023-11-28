@@ -10,7 +10,7 @@
 ```
 ## Description
 SheepMyBoat is a TCP two players game application. It's a twin of the Battleship game.       
-The app use the SheepMyBoat protocole you can find the information about it [here.](/PROTOCOL.md)
+The app use the SheepMyBoat protocole, you can find the information about it [here.](/PROTOCOL.md)
 
 ## Building the app
 The app use maven  so in order to build and package the app use this command.
