@@ -34,7 +34,7 @@ The port's value is by default `11111`
 java -jar <path-to-jar> server -a <address> -p <port>
 
 # Example
-java -jar SheepMaBoat-v1.0.jar server --adrress 127.0.0.1
+java -jar SheepMaBoat-v1.0.jar server --address 127.0.0.1
 ```
 
 ### Launch a player(client)
@@ -43,7 +43,7 @@ java -jar SheepMaBoat-v1.0.jar server --adrress 127.0.0.1
 java -jar <path-to-jar> client -a <address> -p <port>
 
 # Example
-java -jar SheepMaBoat-v1.0.jar client --adrress 127.0.0.1 --port 11111
+java -jar SheepMaBoat-v1.0.jar client --address 127.0.0.1 --port 11111
 ```
 
 ### Description
