@@ -1,16 +1,16 @@
 # SheepMyBoat application's protocol
 
 ## 1 - Overview
-The SheepMyBoat protocol is meant to play a battleship game over the network. It's a client-server protocol.   
-The client connects to a server and request to play a new game if another player is also ready to play.    
-The server manage the game's logic between the two players.  
-When a game is over both player are logged out. They can reconnect if they want to play another game or with another player.   
-We expect that no one disconnects during the game.
+- The SheepMyBoat protocol is meant to play a battleship game over the network. It's a client-server protocol.   
+- The client connects to a server and request to play a new game if another player is also ready to play.    
+- The server manage the game's logic between the two players.  
+- When a game is over both player are logged out. They can reconnect if they want to play another game or with another player.   
+- We expect that no one disconnects during the game.
 
 ## 2 - Transport protocol
-The SheepMyBoat protocol uses the `TCP protocol`. The server runs on the `port 11111`.  
-The client has to know the IP address of the server to connect to. **The client establishes the connection with the server.**   
-The connection ends when a game is over. If you want to replay or play with another player you will have to reconnect.
+- The SheepMyBoat protocol uses the `TCP protocol`. The server runs on the `port 11111`.  
+- The client has to know the IP address of the server to connect to. **The client establishes the connection with the server.**   
+- The connection ends when a game is over. If you want to replay or play with another player you will have to reconnect.
 
 ## 3 - Messages
 
