@@ -67,5 +67,5 @@ Command: `goodbye`
 |You will leave the server.|
 
 ## 4 - Example
-
+### Sequence diagram
 ![SheepMyBoatProtocl](/SheepMyBoatProtocol.drawio.png)
