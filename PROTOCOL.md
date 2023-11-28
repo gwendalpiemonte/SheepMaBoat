@@ -19,6 +19,11 @@ Start the server : `server -i <ip (default -> 127.0.0.1)> -p <port (default -> 1
 | ---- | ---- |
 |`Server waiting connection on <adrress>:<port>`|The server is waiting for a connection from a client.|
 
+Shutdown the server : `shutdown`
+|Detail|
+| ---- |
+|It will shut the server down.|
+
 
 ### Client
 #### Connection
