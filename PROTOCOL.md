@@ -68,4 +68,4 @@ Command: `goodbye`
 
 ## 4 - Example
 
-![SheepMyBoatProtocl]()
+![SheepMyBoatProtocl](/SheepMyBoatProtocol.drawio.png)
