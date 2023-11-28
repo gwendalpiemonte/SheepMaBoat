@@ -65,3 +65,7 @@ Command: `goodbye`
 |Detail|
 | ---- |
 |You will leave the server.|
+
+## 4 - Example
+
+![SheepMyBoatProtocl]()
