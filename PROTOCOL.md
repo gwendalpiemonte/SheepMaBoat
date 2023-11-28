@@ -37,7 +37,7 @@ Command: `client -i <ip> -p <port (default -> 11111)>`
 Command: `username <username>`
 |Response|Detail|
 | ---- | ---- |
-|`CMD <username accepted message>`|The username as been added.|
+|`CMD_<username accepted message>`|The username as been added and you what you have to do.|
 |`ERR_200`|Use the username command|
 |`ERR_201`|The username is too short sorry.|
 |`ERR_202`|The username is too long sorry.|
@@ -47,7 +47,7 @@ Command: `username <username>`
 Command: `start`
 |Response|Detail|
 | ---- | ---- |
-|`TXT_<the player's playboard>`|When both player are ready the one who send `start` first will start the game and recieve his play board|
+|`TXT_<the player's playboard>`|When both player are ready the one who send `start` first will start the game and recieve his playboards.|
 |`ERR_204`|You need to have a username.|
 |`ERR_300`|You have to enter start to start the game.|
 
@@ -55,7 +55,7 @@ Command: `start`
 Command: `shoot <position -> B1>`
 |Response|Detail|
 | ---- | ---- |
-|`TXT_<the player's updated playborad>`|Your updated playboard with your last shoot and the opponent shoot.|
+|`TXT_<the player's updated playborads>`|Your updated playboards with your last shoot and the opponent shoot.|
 |`ERR_400`|You need to use the command shoot.|
 |`ERR_401`|You need to use the command shoot.|
 |`ERR_402`|Your shoot is out of the play board.|
@@ -63,11 +63,11 @@ Command: `shoot <position -> B1>`
 #### Finish game
 |Response|Detail|
 | ---- | ---- |
-|`EGE_W`|The game is over and you won|
-|`EGE_L`|The game is over and you lose|
+|`EGE_W`|The game is over and you won.|
+|`EGE_L`|The game is over and you lose.|
 
 #### Quit game (auto send command when the game is over)
-Command: `goodbye`
+Command: `GoodBye`
 |Detail|
 | ---- |
 |You will leave the server.|
