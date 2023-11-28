@@ -1,4 +1,4 @@
-# SheepMyBoat
+# SheepMaBoat
 
 ```
                              v  ~.      v
@@ -9,8 +9,8 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`~~~~~~'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ## Description
-SheepMyBoat is a TCP two players game application. It's a twin of the Battleship game.       
-The app use the SheepMyBoat protocol, you can find the information about it [here.](/PROTOCOL.md)
+SheepMaBoat is a TCP two players game application. It's a twin of the Battleship game.       
+The app use the SheepMaBoat protocol, you can find the information about it [here.](/PROTOCOL.md)
 
 ## Building the app
 The app use maven  so in order to build and package the app use this command.
@@ -24,7 +24,7 @@ The app use maven  so in order to build and package the app use this command.
 ```
 
 ## Running the app
-Download the .jar file into the lastest [release](https://github.com/gwendalpiemonte/SheepMyBoat/releases/tag/v1.0) and run the command explained under this text. You can also download the source code and build the code with Maven but make sure to have included all dependencies.
+Download the .jar file into the lastest [release](https://github.com/gwendalpiemonte/SheepMaBoat/releases/tag/v1.0) and run the command explained under this text. You can also download the source code and build the code with Maven but make sure to have included all dependencies.
 
 ### Launch the game server
 
