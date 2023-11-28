@@ -4,6 +4,7 @@
 The SheepMyBoat protocol is meant to play a battleship game over the network. It's a client-server protocol.   
 The client connects to a server and request to play a new game if another player is also ready to play.    
 The server manage the game's logic between the two players.   
+If one of the two players disconnects for any reason during the game, the game ends, and both players will be disconnected from the server.  
 
 ## 2 - Transport protocol
 The SheepMyBoat protocol uses the `TCP protocol`. The server runs on the `port 11111`.  
@@ -69,7 +70,7 @@ Command: `goodbye`
 ## 4 - Example
 
 ### Sequence diagram
-If one of the two players disconnects for any reason, the game ends, and both players will be disconnected from the server.   
+Reminder : If one of the two players disconnects for any reason, the game ends, and both players will be disconnected from the server.   
 
 ![SheepMyBoatProtocl](/SheepMyBoatProtocol.drawio.png)
 
