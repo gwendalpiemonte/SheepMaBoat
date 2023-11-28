@@ -57,7 +57,8 @@ Command: `shoot <position -> B1>`
 #### Finish game
 |Response|Detail|
 | ---- | ---- |
-|`EGE_<game status>`|The game is over and your game status (won or lose)|
+|`EGE_W`|The game is over and you won|
+|`EGE_L`|The game is over and you lose|
 
 #### Quit game (auto send command when the game is over)
 Command: `goodbye`
