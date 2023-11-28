@@ -67,5 +67,11 @@ Command: `goodbye`
 |You will leave the server.|
 
 ## 4 - Example
+
 ### Sequence diagram
+If one of the two players disconnects for any reason, the game ends, and both players will be disconnected from the server.   
+
 ![SheepMyBoatProtocl](/SheepMyBoatProtocol.drawio.png)
+
+
+
