@@ -14,38 +14,47 @@ The connection ends when a game is over. If you want to replay or play with anot
 
 ### Server
 Start the server : `server -i <ip (default -> 127.0.0.1)> -p <port (default -> 11111)>`
+|Response|Detail|
+| ---- | ---- |
+|`Server waiting connection on <adrress>:<port>`|The server is waiting for a connection from a client.|
+
 
 ### Client
 #### Connection
 Command: `client -i <ip> -p <port (default -> 11111)>`
 |Response|Detail|
 | ---- | ---- |
-|`Connected`|The client is connected!|
-|`Error_1`|There is too much people on the server.|
+|`CMD <welcome message>`|A welcome message and you what you have to do.|
+|`ERR 100`|There is too much people on the server.|
 
 #### Register username
 Command: `username <username>`
 |Response|Detail|
 | ---- | ---- |
-|`Accepted`|The username as been added.|
-|`Error_2`|The username is too long sorry.|
+|`CMD <username accepted message>`|The username as been added.|
+|`ERR 200`|Use the username command|
+|`ERR 201`|The username is too short sorry.|
+|`ERR 202`|The username is too long sorry.|
+|`ERR 203`|The username doesn't fit our policies.|
 
 #### Start game
 Command: `start`
 |Response|Detail|
 | ---- | ---- |
-|`Error_3`|You need to have a username.|
+|`TXT <the player's playboard>`|When both player are ready the one who send `start` first will start the game and recieve his play board|
+|`ERR 204`|You need to have a username.|
+|`ERR 300`|You have to enter start to start the game.|
 
 #### Attack sheep
 Command: `shoot <position -> B1>`
 |Response|Detail|
 | ---- | ---- |
-|`Touched`|You touched a sheep.|
-|`Missed`|You missed the shot.|
-|`Sinked`|You sink a boat.|
-|`Error_4`|Shoot out of range|
+|`TXT <the player's updated playborad>`|Your updated playboard with your last shoot and the opponent shoot.|
+|`ERR 400`|You need to use the command shoot.|
+|`ERR 401`|You need to use the command shoot.|
+|`ERR 402`|Your shoot is out of the play board.|
 
 #### Finish game
 |Response|Detail|
 | ---- | ---- |
-|`EndGame`|The game is finished|
+|`EGE <game status>`|The game is finished and tell you if you won or lose.|
