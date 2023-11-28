@@ -10,13 +10,17 @@
 ```
 ## Description
 SheepMyBoat is a TCP two players game application. It's a twin of the Battleship game.       
-The app use the SheepMyBoat protocole, you can find the information about it [here.](/PROTOCOL.md)
+The app use the SheepMyBoat protocol, you can find the information about it [here.](/PROTOCOL.md)
 
 ## Building the app
 The app use maven  so in order to build and package the app use this command.
 
 ```sh
-./mvnw dependency:resolve clean compile package
+# Download the dependencies
+./mvnw dependency:resolve
+
+# Package the application
+./mvnw package
 ```
 
 ## Running the app
@@ -30,7 +34,7 @@ The port's value is by default `11111`
 java -jar <path-to-jar> server -a <address> -p <port>
 
 # Example
-java -jar <path-to-jar> server --adrress=127.0.0.1
+java -jar <path-to-jar> server --adrress 127.0.0.1
 ```
 
 ### Launch a player(client)
@@ -39,7 +43,7 @@ java -jar <path-to-jar> server --adrress=127.0.0.1
 java -jar <path-to-jar> client -a <address> -p <port>
 
 # Example
-java -jar <path-to-jar> client --adrress=127.0.0.1 --port=11111
+java -jar <path-to-jar> client --adrress 127.0.0.1 --port 11111
 ```
 
 ### Description
