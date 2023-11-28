@@ -24,14 +24,22 @@ Download the .jar file into the lastest [release]() and run the command explaine
 
 ### Launch the game server
 
+The port's value is by default `11111`
+
 ```sh
 java -jar <path-to-jar> server -a <address> -p <port>
+
+# Example
+java -jar <path-to-jar> server --adrress=127.0.0.1
 ```
 
 ### Launch a player(client)
 
 ```sh
 java -jar <path-to-jar> client -a <address> -p <port>
+
+# Example
+java -jar <path-to-jar> client --adrress=127.0.0.1 --port=11111
 ```
 
 ### Description
