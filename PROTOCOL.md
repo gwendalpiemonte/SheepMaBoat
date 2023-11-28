@@ -57,4 +57,10 @@ Command: `shoot <position -> B1>`
 #### Finish game
 |Response|Detail|
 | ---- | ---- |
-|`EGE <game status>`|The game is finished and tell you if you won or lose.|
+|`EGE <game status>`|The game is over and your game status (won or lose)|
+
+#### Quit game (auto send command when the game is over)
+Command: `goodbye`
+|Detail|
+| ---- |
+|You will leave the server.|
