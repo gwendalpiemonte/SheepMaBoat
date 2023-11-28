@@ -24,40 +24,40 @@ Start the server : `server -i <ip (default -> 127.0.0.1)> -p <port (default -> 1
 Command: `client -i <ip> -p <port (default -> 11111)>`
 |Response|Detail|
 | ---- | ---- |
-|`CMD <welcome message>`|A welcome message and you what you have to do.|
-|`ERR 100`|There is too much people on the server.|
+|`CMD_<welcome message>`|A welcome message and you what you have to do.|
+|`ERR_100`|There is too much people on the server.|
 
 #### Register username
 Command: `username <username>`
 |Response|Detail|
 | ---- | ---- |
 |`CMD <username accepted message>`|The username as been added.|
-|`ERR 200`|Use the username command|
-|`ERR 201`|The username is too short sorry.|
-|`ERR 202`|The username is too long sorry.|
-|`ERR 203`|The username doesn't fit our policies.|
+|`ERR_200`|Use the username command|
+|`ERR_201`|The username is too short sorry.|
+|`ERR_202`|The username is too long sorry.|
+|`ERR_203`|The username doesn't fit our policies.|
 
 #### Start game
 Command: `start`
 |Response|Detail|
 | ---- | ---- |
-|`TXT <the player's playboard>`|When both player are ready the one who send `start` first will start the game and recieve his play board|
-|`ERR 204`|You need to have a username.|
-|`ERR 300`|You have to enter start to start the game.|
+|`TXT_<the player's playboard>`|When both player are ready the one who send `start` first will start the game and recieve his play board|
+|`ERR_204`|You need to have a username.|
+|`ERR_300`|You have to enter start to start the game.|
 
 #### Attack sheep
 Command: `shoot <position -> B1>`
 |Response|Detail|
 | ---- | ---- |
-|`TXT <the player's updated playborad>`|Your updated playboard with your last shoot and the opponent shoot.|
-|`ERR 400`|You need to use the command shoot.|
-|`ERR 401`|You need to use the command shoot.|
-|`ERR 402`|Your shoot is out of the play board.|
+|`TXT_<the player's updated playborad>`|Your updated playboard with your last shoot and the opponent shoot.|
+|`ERR_400`|You need to use the command shoot.|
+|`ERR_401`|You need to use the command shoot.|
+|`ERR_402`|Your shoot is out of the play board.|
 
 #### Finish game
 |Response|Detail|
 | ---- | ---- |
-|`EGE <game status>`|The game is over and your game status (won or lose)|
+|`EGE_<game status>`|The game is over and your game status (won or lose)|
 
 #### Quit game (auto send command when the game is over)
 Command: `goodbye`
