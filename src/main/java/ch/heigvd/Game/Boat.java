@@ -23,16 +23,16 @@ public class Boat {
         int y = random.nextInt(5) + 1;
 
         if (horizontal && x + size - 1 > 5) {
-            x = 5 - size + 1; // Réajuster x pour qu'il reste dans la grille
+            x = 5 - size + 1;
         } else if (!horizontal && y + size - 1 > 5) {
-            y = 5 - size + 1; // Réajuster y pour qu'il reste dans la grille
+            y = 5 - size + 1;
         }
 
         for (int i = 0; i < size; i++) {
             if (horizontal) {
-                positions.add(new Position((char)((x + i) + 64), y)); // Convertit x et y en lettres A-J
+                positions.add(new Position((char)((x + i) + 64), y));
             } else {
-                positions.add(new Position((char)(x + 64), (y + i))); // Convertit x et y en lettres A-J
+                positions.add(new Position((char)(x + 64), (y + i)));
             }
         }
     }
@@ -40,10 +40,10 @@ public class Boat {
         boolean check = false;
 
         while(!check){
-            Boat[] boats = new Boat[1];
+            Boat[] boats = new Boat[3];
             boats[0] = new Boat(2,'A');
-            //boats[1] = new Boat(3,'B');
-            //boats[2] = new Boat(2,'C');
+            boats[1] = new Boat(3,'B');
+            boats[2] = new Boat(2,'C');
 
             check = true;
 
